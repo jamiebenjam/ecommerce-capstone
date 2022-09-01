@@ -6,9 +6,9 @@ class ProductsController < ApplicationController
     end
 
     def update
-        prodcut = Product.find(params[:id])
-        prodcut.update(product_params)
-        render json: prodcut, status: 202
+        product = Product.find(params[:id])
+        product.update(update_params)
+        render json: product, status: 202
     end
 
     def create 
@@ -20,5 +20,9 @@ class ProductsController < ApplicationController
 
     def product_params 
         params.permit(:title, :description, :image)
+    end
+
+    def update_params 
+        params.permit(:id, :title, :description, :image)
     end
 end

@@ -1,33 +1,28 @@
 import { Form, Container, Button } from 'semantic-ui-react'
 import { useState } from 'react'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-function AdminEditProduct( {product} ){
+function AdminEditProduct( {product, setProducts, editProduct} ){
     const [formState, setFormState] = useState({})
 
-    // let navigate = useNavigate();
+    let navigate = useNavigate();
 
     function handleSubmit(e) {
         e.preventDefault();
-        const newFormObj = {
-            title,
-            description,
-            image
-        }
         
         fetch(`/products/${product.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(newFormObj),
+            body: JSON.stringify(formState),
         })
         .then((r) => r.json())
-        .then((data) => console.log(data))
-        // .then(navigate('/profile'))
+        .then((data) => editProduct(data))
+        .then(navigate('/products'))
     }
     
-    const {title, description, image} = formState
+    // const {title, description, image} = formState
 
 
     function handleFormChange(e) {
@@ -48,7 +43,7 @@ function AdminEditProduct( {product} ){
                 <label htmlFor="image">Image</label>
                 <input onChange={handleFormChange} type="text" id="image" name="image" placeholder={product.image} ></input>
 
-            <Button type="submit" >Submit</Button>
+                <Button type="submit" >Submit</Button>
                 <br></br>
             </Form>
         </Container>

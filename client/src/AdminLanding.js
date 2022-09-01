@@ -7,13 +7,14 @@ import AdminEditModal from "./AdminEditModal";
 function AdminLanding(){
     const [products, setProducts] = useState([])
     const [open, setOpen] = useState(false)
+    const [productID, setProductID] = useState(false)
 
     console.log(products)
 
     function fetchProducts() {
         fetch("/products")
         .then(response => response.json())
-        .then(productData => setProducts(productData))
+        .then(data => setProducts(data))
     }
     
     useEffect(fetchProducts, []);
@@ -21,6 +22,20 @@ function AdminLanding(){
     const onAddProduct = ((newProduct) => {
         setProducts((prevProducts) => [...prevProducts, newProduct])
       })
+
+    const editProduct = (updatedProduct) => {
+        setProducts(prevProducts => {
+            const newProductArray = prevProducts.map(product => {
+            if(product.id === updatedProduct.id){
+                return updatedProduct
+            } else {
+                return product
+            }
+            })
+            return newProductArray
+        })
+        setProductID(false)
+    } 
     
     const productsMap = products.map((product) => {
         return (
@@ -38,7 +53,7 @@ function AdminLanding(){
                     <Image src={product.image} size="tiny"/>
                 </Table.Cell>
                 <Table.Cell>
-                   <AdminEditModal product={product} />
+                   <AdminEditModal product={product} setProducts={setProducts} editProduct={editProduct} />
                 </Table.Cell>
             </Table.Row>
         )
@@ -81,7 +96,7 @@ function AdminLanding(){
                                 >
                                 <Header icon='archive' content='Add a Product' />
                                 <Modal.Content>
-                                    <AdminAddProduct onAddProduct={onAddProduct}/>
+                                    <AdminAddProduct onAddProduct={onAddProduct} />
                                 </Modal.Content>
                                 <Modal.Actions>
                                     <Button color='green' onClick={() => setOpen(false)}>
