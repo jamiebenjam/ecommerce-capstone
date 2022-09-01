@@ -10,7 +10,6 @@ function AdminLanding(){
 
     console.log(products)
 
-    
     function fetchProducts() {
         fetch("/products")
         .then(response => response.json())
@@ -25,7 +24,7 @@ function AdminLanding(){
     
     const productsMap = products.map((product) => {
         return (
-            <Table.Row>
+            <Table.Row key={product.id}>
                 <Table.Cell collapsing>
                     <Checkbox slider />
                 </Table.Cell>
@@ -36,7 +35,7 @@ function AdminLanding(){
                     {product.description}
                 </Table.Cell>
                 <Table.Cell>
-                    <Image src={product.image} fluid size="tiny"/>
+                    <Image src={product.image} size="tiny"/>
                 </Table.Cell>
                 <Table.Cell>
                    <AdminEditModal product={product} />
@@ -48,7 +47,7 @@ function AdminLanding(){
    return(
     <div>
         <Container>
-            <Table fixed size="small" padded="very" compact="true">
+            <Table fixed size="small" padded="very" >
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Active</Table.HeaderCell>
