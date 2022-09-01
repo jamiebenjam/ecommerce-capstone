@@ -2,7 +2,7 @@ import { Form, Container, Button } from 'semantic-ui-react'
 import { useState } from 'react'
 // import { useNavigate } from 'react-router-dom'
 
-function AdminAddProduct( {onAddProduct} ){
+function AdminEditProduct( {product} ){
     const [formState, setFormState] = useState({})
 
     // let navigate = useNavigate();
@@ -15,16 +15,16 @@ function AdminAddProduct( {onAddProduct} ){
             image
         }
         
-        fetch("/products", {
-            method: "POST",
+        fetch(`/products/${product.id}`, {
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(newFormObj),
         })
         .then((r) => r.json())
-        .then((data) => onAddProduct(data))
-        // .then(navigate('/homefeed'))
+        .then((data) => console.log(data))
+        // .then(navigate('/profile'))
     }
     
     const {title, description, image} = formState
@@ -40,13 +40,13 @@ function AdminAddProduct( {onAddProduct} ){
         <Container>
             <Form onSubmit={handleSubmit}>
                 <label htmlFor="title">Title</label>
-                <input onChange={handleFormChange} type="text" id="title" name="title" ></input>
+                <input onChange={handleFormChange} type="text" id="title" name="title" placeholder={product.title} ></input>
 
                 <label htmlFor="description">Description</label>
-                <input onChange={handleFormChange} type="text" id="description" name="description"></input>
+                <input onChange={handleFormChange} type="text" id="description" name="description" placeholder={product.description} ></input>
 
                 <label htmlFor="image">Image</label>
-                <input onChange={handleFormChange} type="text" id="image" name="image"></input>
+                <input onChange={handleFormChange} type="text" id="image" name="image" placeholder={product.image} ></input>
 
             <Button type="submit" >Submit</Button>
                 <br></br>
@@ -56,4 +56,4 @@ function AdminAddProduct( {onAddProduct} ){
     )
 }
 
-export default AdminAddProduct;
+export default AdminEditProduct;
