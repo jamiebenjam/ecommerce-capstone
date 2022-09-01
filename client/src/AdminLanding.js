@@ -1,12 +1,11 @@
-import AdminAddProduct from "./AdminAddProduct";
 import { useState, useEffect } from "react";
-import { Table, Container, Checkbox, Button, Icon, Modal, Header, Image } from 'semantic-ui-react'
+import { Table, Container, Checkbox, Image } from 'semantic-ui-react'
 import AdminEditModal from "./AdminEditModal";
+import AdminAddModal from "./AdminAddModal";
 
 
 function AdminLanding(){
     const [products, setProducts] = useState([])
-    const [open, setOpen] = useState(false)
     const [productID, setProductID] = useState(false)
 
     console.log(products)
@@ -53,7 +52,7 @@ function AdminLanding(){
                     <Image src={product.image} size="tiny"/>
                 </Table.Cell>
                 <Table.Cell>
-                   <AdminEditModal product={product} setProducts={setProducts} editProduct={editProduct} />
+                   <AdminEditModal product={product} editProduct={editProduct} />
                 </Table.Cell>
             </Table.Row>
         )
@@ -69,44 +68,17 @@ function AdminLanding(){
                         <Table.HeaderCell>Product Title</Table.HeaderCell>
                         <Table.HeaderCell>Description</Table.HeaderCell>
                         <Table.HeaderCell>Image</Table.HeaderCell>
-                        <Table.HeaderCell> </Table.HeaderCell>
+
+                        <Table.HeaderCell colSpan='0'>
+                            <AdminAddModal onAddProduct={onAddProduct}/>
+                        </Table.HeaderCell>
+
                     </Table.Row>
                 </Table.Header>
 
                 <Table.Body>
                   {productsMap}
                 </Table.Body>
-
-                <Table.Footer fullWidth>
-                    <Table.Row>
-                        <Table.HeaderCell />
-                        <Table.HeaderCell colSpan='4'>
-                            <Modal
-                                closeIcon
-                                open={open}
-                                trigger={<Button  
-                                floated='right'
-                                icon
-                                labelPosition='left'
-                                primary
-                                size='small'>
-                                <Icon name='plus' /> Add Product</Button>}
-                                onClose={() => setOpen(false)}
-                                onOpen={() => setOpen(true)}
-                                >
-                                <Header icon='archive' content='Add a Product' />
-                                <Modal.Content>
-                                    <AdminAddProduct onAddProduct={onAddProduct} />
-                                </Modal.Content>
-                                <Modal.Actions>
-                                    <Button color='green' onClick={() => setOpen(false)}>
-                                    <Icon name='add' /> Add
-                                    </Button>
-                                </Modal.Actions>
-                            </Modal>
-                        </Table.HeaderCell>
-                    </Table.Row>
-                </Table.Footer>
             </Table>
         </Container>
 

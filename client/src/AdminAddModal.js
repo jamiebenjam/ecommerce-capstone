@@ -1,27 +1,28 @@
 import { Modal, Button, Icon, Header } from 'semantic-ui-react';
-import AdminEditProduct from './AdminEditProduct';
+import AdminAddProduct from './AdminAddProduct';
 import { useState } from 'react'
 
-function AdminEditModal( {product, setProducts, editProduct} ){
+function AdminAddModal( {onAddProduct} ){
     const [open, setOpen] = useState(false)
 
     return(
         <div>
-             <Modal
+            <Modal
                 closeIcon
                 open={open}
                 trigger={<Button  
                 floated='right'
                 icon
                 labelPosition='left'
-                size='mini'>
-                <Icon name='edit' /> Edit</Button>}
+                primary
+                size='tiny'>
+                <Icon name='plus' /> Add Product</Button>}
                 onClose={() => setOpen(false)}
                 onOpen={() => setOpen(true)}
                 >
-                <Header icon='edit' content='Edit Product' />
+                <Header icon='archive' content='Add a Product' />
                 <Modal.Content>
-                    <AdminEditProduct product={product} editProduct={editProduct} />
+                    <AdminAddProduct onAddProduct={onAddProduct} />
                 </Modal.Content>
                 <Modal.Actions>
                     <Button color='green' onClick={() => setOpen(false)}>
@@ -33,4 +34,4 @@ function AdminEditModal( {product, setProducts, editProduct} ){
     )
 }
 
-export default AdminEditModal;
+export default AdminAddModal;

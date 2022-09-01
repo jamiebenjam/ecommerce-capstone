@@ -2,9 +2,15 @@ import { Form, Container, Button } from 'semantic-ui-react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function AdminEditProduct( {product, setProducts, editProduct} ){
-    const [formState, setFormState] = useState({})
+function AdminEditProduct( {product, editProduct} ){
+    const [formState, setFormState] = useState({
+        title: product.title,
+        description: product.description,
+        image: product.image
+    })
 
+    const {title, description, image} = formState
+    
     let navigate = useNavigate();
 
     function handleSubmit(e) {
@@ -22,7 +28,6 @@ function AdminEditProduct( {product, setProducts, editProduct} ){
         .then(navigate('/products'))
     }
     
-    // const {title, description, image} = formState
 
 
     function handleFormChange(e) {
@@ -30,18 +35,20 @@ function AdminEditProduct( {product, setProducts, editProduct} ){
         setFormState((prevState) => ({...prevState, [name]:value}))
     }
 
+    console.log(formState)
+
     return(
         <div>
         <Container>
             <Form onSubmit={handleSubmit}>
                 <label htmlFor="title">Title</label>
-                <input onChange={handleFormChange} type="text" id="title" name="title" placeholder={product.title} ></input>
+                <input onChange={handleFormChange} type="text" id="title" name="title" value={title} ></input>
 
                 <label htmlFor="description">Description</label>
-                <input onChange={handleFormChange} type="text" id="description" name="description" placeholder={product.description} ></input>
+                <input onChange={handleFormChange} type="text" id="description" name="description" value={description} ></input>
 
                 <label htmlFor="image">Image</label>
-                <input onChange={handleFormChange} type="text" id="image" name="image" placeholder={product.image} ></input>
+                <input onChange={handleFormChange} type="text" id="image" name="image" value={image} ></input>
 
                 <Button type="submit" >Submit</Button>
                 <br></br>
