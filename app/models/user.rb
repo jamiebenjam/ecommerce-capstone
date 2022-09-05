@@ -12,5 +12,5 @@ class User < ApplicationRecord
 
     validates :email, uniqueness: true
     validates :email, :address, :password, :first_name, :last_name, :password_confirmation, presence: true, on: :create
-    # validates :password, format: { with: PASSWORD_REQUIREMENTS }, on: :create 
+    # validates :password, format: { with: PASSWORD_REQUIREMENTS }, on: :create
 end

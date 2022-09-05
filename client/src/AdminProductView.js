@@ -52,6 +52,15 @@ function AdminProductView(){
                     <Image src={product.image} size="tiny"/>
                 </Table.Cell>
                 <Table.Cell>
+                    <p>{`$${product.price}`}</p>
+                </Table.Cell>
+                <Table.Cell>
+                    {product.color}
+                </Table.Cell>
+                <Table.Cell>
+                    {product.category}
+                </Table.Cell>
+                <Table.Cell>
                    <AdminEditModal product={product} editProduct={editProduct} />
                 </Table.Cell>
             </Table.Row>
@@ -68,10 +77,13 @@ function AdminProductView(){
             <Table fixed size="small" padded="very" >
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Active</Table.HeaderCell>
+                        <Table.HeaderCell>In Stock</Table.HeaderCell>
                         <Table.HeaderCell>Product Title</Table.HeaderCell>
                         <Table.HeaderCell>Description</Table.HeaderCell>
                         <Table.HeaderCell>Image</Table.HeaderCell>
+                        <Table.HeaderCell>Price</Table.HeaderCell>
+                        <Table.HeaderCell>Color</Table.HeaderCell>
+                        <Table.HeaderCell>Category</Table.HeaderCell>
 
                         <Table.HeaderCell colSpan='0'>
                             <AdminAddModal onAddProduct={onAddProduct}/>

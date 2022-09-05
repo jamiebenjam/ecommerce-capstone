@@ -1,4 +1,4 @@
 class OrderSerializer < ActiveModel::Serializer
-  attributes :id, :amount, :address, :status, :invoice, :email, :name
+  attributes :id, :amount, :status, :name, :email, :address
   has_one :user
 end

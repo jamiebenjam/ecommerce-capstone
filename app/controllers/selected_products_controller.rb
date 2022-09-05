@@ -1,2 +1,0 @@
-class SelectedProductsController < ApplicationController
-end

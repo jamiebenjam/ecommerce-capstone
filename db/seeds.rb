@@ -6,50 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# u1 = User.create(
-#     first_name: 'Jamie',
-#     last_name: 'Benjamin',
-#     email: 'jamie@gmail.com',
-#     password_digest: BCrypt::Password.create('password'),
-#     address: '123 Main Street'
-# )
+#Categories
+c1 = Category.create(name: 'Lehenga')
+c2 = Category.create(name: 'Chaniya Choli')
+c3 = Category.create(name: 'Dress')
+c4 = Category.create(name: 'Gown')
+c5 = Category.create(name: 'Saree')
+c6 = Category.create(name: 'Blouse')
+c7 = Category.create(name: 'Duster')
+c8 = Category.create(name: 'Dupatta')
+c9 = Category.create(name: 'Jewelry')
+c10 = Category.create(name: 'Bag')
 
-p1 = Product.create(
-    title: 'CC3667',
-    description: 'Keep it classy with this full flare chaniya choli featuring a  silk chaniya with embroidery border and  blouse and georgette dupatta.' 
-)
-
-c1 = Cart.create(
-    id: 1
-)
-
-# o1 = Order.create(
-#     user_id: u1.id,
-#     amount: 100,
-#     address: '456 Side Street',
-#     status: 'pending',
-#     invoice: 'please wait on your order',
-#     email: 'jamie@gmail.com',
-#     name: 'jim benjim'
-# )
-
-# sp1 = SelectedProduct.create(
-#     cart_id: c1.id,
-#     order_id: o1.id,
-#     quantity: 2,
-#     product_id: p1.id,
-#     size: 'small',
-#     color: 'blue',
-#     price: 50
-# )
-
-cg1 = Category.create(
-    name: 'lehenga',
-    description: 'Lehenga',
-    isActive: true
-)
-
-pc1 = ProductCategory.create(
-    product_id: p1.id,
-    category_id: cg1.id
-)
+#ProductCategory
+pc1 = ProductCategory.create(product_id: 1, category_id: c1.id)
+pc2 = ProductCategory.create(product_id: 2, category_id: c5.id)

@@ -1,14 +1,16 @@
 import './App.css';
-// import AdminLanding from './AdminLanding';
+import AdminLanding from './AdminLanding';
 // import { Routes, Route } from 'react-router-dom';
 import UserLandingView from './UserLandingView';
+import UserShopAll from './UserShopAll';
 
 function App() {
 
   return (
     <div className="App">
      {/* <AdminLanding /> */}
-     <UserLandingView />
+     {/* <UserLandingView /> */}
+     <UserShopAll />
     </div>
   );
 }

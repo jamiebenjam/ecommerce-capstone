@@ -1,4 +1,4 @@
-import { Form, Container, Button } from 'semantic-ui-react'
+import { Form, Container, Button, Select } from 'semantic-ui-react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -6,10 +6,14 @@ function AdminEditProduct( {product, editProduct} ){
     const [formState, setFormState] = useState({
         title: product.title,
         description: product.description,
-        image: product.image
+        image: product.image,
+        price: product.price,
+        color: product.color,
+        category: product.category,
+        isActive: product.isActive
     })
 
-    const {title, description, image} = formState
+    const {title, description, image, price, color, category, isActive} = formState
     
     let navigate = useNavigate();
 
@@ -37,6 +41,12 @@ function AdminEditProduct( {product, editProduct} ){
 
     console.log(formState)
 
+    const options = [
+        { key: 's', text: 'Saree', value: 'saree' },
+        { key: 'f', text: 'Female', value: 'female' },
+        { key: 'o', text: 'Other', value: 'other' },
+      ]
+
     return(
         <div>
         <Container>
@@ -50,6 +60,20 @@ function AdminEditProduct( {product, editProduct} ){
                 <label htmlFor="image">Image</label>
                 <input onChange={handleFormChange} type="text" id="image" name="image" value={image} ></input>
 
+                <label htmlFor="price">Price</label>
+                <input onChange={handleFormChange} type="number" id="price" name="price" value={price}></input>
+
+                <label htmlFor="color">Color</label>
+                <input onChange={handleFormChange} type="text" id="color" name="color" value={color}></input>
+
+                <Form.Field onChange={handleFormChange} control={Select} label='Category' options={options} value={category}/>
+
+                <label htmlFor="isActive">In Stock</label>
+                <input onChange={handleFormChange} type="radio" id="isActive" name="isActive" value={isActive}></input>
+
+
+                <br></br>
+                <br></br>
                 <Button type="submit" >Submit</Button>
                 <br></br>
             </Form>

@@ -12,7 +12,10 @@ function AdminAddProduct( {onAddProduct} ){
         const newFormObj = {
             title,
             description,
-            image
+            image,
+            price,
+            color,
+            isActive
         }
         
         fetch("/products", {
@@ -27,7 +30,7 @@ function AdminAddProduct( {onAddProduct} ){
         // .then(navigate('/homefeed'))
     }
     
-    const {title, description, image} = formState
+    const {title, description, image, price, color, isActive} = formState
 
 
     function handleFormChange(e) {
@@ -48,8 +51,22 @@ function AdminAddProduct( {onAddProduct} ){
                 <label htmlFor="image">Image</label>
                 <input onChange={handleFormChange} type="text" id="image" name="image"></input>
 
-            <Button type="submit" >Submit</Button>
+                <label htmlFor="price">Price</label>
+                <input onChange={handleFormChange} type="number" id="price" name="price"></input>
+
+                <label htmlFor="color">Color</label>
+                <input onChange={handleFormChange} type="text" id="color" name="color"></input>
+
+                <label htmlFor="category">Category</label>
+                <input onChange={handleFormChange} type="text" id="category" name="category"></input>
+
+                <label htmlFor="isActive">In Stock</label>
+                <input onChange={handleFormChange} type="radio" id="isActive" name="isActive"></input>
+
+
                 <br></br>
+                <br></br>
+                <Button type="submit" >Submit</Button>
             </Form>
         </Container>
         </div>

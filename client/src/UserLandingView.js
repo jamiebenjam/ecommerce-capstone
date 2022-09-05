@@ -1,29 +1,12 @@
 import React from 'react';
-import { Container, Icon, Grid, Header } from 'semantic-ui-react'
+import UserLandingHeader from './UserLandingHeader';
+import UserLandingLayout from './UserLandingLayout';
 
 function UserLandingView(){
     return (
         <div>
-            <Container>
-                <Grid textAlign="center">
-                <Grid.Column width={3} >
-                    <Header>Shop</Header>
-                </Grid.Column>
-                
-                <Grid.Column width={11} >
-                    <Header>RAAS</Header>
-                </Grid.Column>
-
-                <Grid.Column width={1} >
-                    <Icon name='user' />
-                </Grid.Column>
-
-                <Grid.Column width={1} >
-                    <Icon name='cart' />
-                </Grid.Column>
-                
-                </Grid>
-            </Container>
+           <UserLandingHeader />
+           <UserLandingLayout />
         </div>
     );
 };

@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   
+
   resources :product_categories
   resources :categories
-  resources :selected_products
+  resources :product_sizes
+  resources :sizes
+  resources :product_orders
   resources :products
-  resources :carts
   resources :orders
   resources :users
-
+  
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show'
   post '/login', to: 'sessions#create'
