@@ -6,7 +6,6 @@ import Filter from './UserCategoryFilter';
 function UserShopAll() {
     const [products, setProducts] = useState([])
     const [selectedCategory, setSelectedCategory] = useState("All");
-    const [category, setCategory] = useState("Saree");
 
     function fetchProducts() {
         fetch("/products")
@@ -18,34 +17,34 @@ function UserShopAll() {
 
     function handleCategoryChange(category) {
         setSelectedCategory(category);
-      }
+    }
 
+    let selectedProducts = []
 
-      //if category name === selectedCategory then display that product
-    const productsToDisplay = products.filter((product) => {
-        if (selectedCategory === "All") return true;
-    
-        return product.categories.map((category) => {
-            // if (selectedCategory === "All") return true;
-            // console.log(category.name);
+    products?.map(product => 
+        product.categories?.filter(
+            category => {
+                if (selectedCategory === 'All') {
+                    return category.name !== null && selectedProducts.push(product)
+                } else {
+                    return category.name === selectedCategory && selectedProducts.push(product)
+                }
+            }
+        )
+    )
 
-            return category.name === selectedCategory;
-        }) 
-      });
+    console.log(products)
 
-      console.log(productsToDisplay);
-      console.log(selectedCategory);
-
-    const productsMap = productsToDisplay.map((product) => {
+    const productsMap = selectedProducts?.map((product) => {
         return (
             <Card key={product.id} >
                 <Image src={product.image} wrapped ui={false} />
                 <Card.Content>
                     <Card.Header>{product.title}</Card.Header>
-                    <Card.Meta>{product.price}</Card.Meta>
-                    {product.categories.map((category) =>{
+                    <Card.Meta>${parseFloat(product.price).toFixed(2)}</Card.Meta>
+                    {/* {product.categories.map((category) =>{
                         return <Card.Meta key={category.id} >{category.name}</Card.Meta>
-                    })}
+                    })} */}
                 </Card.Content>
             </Card>
         )
