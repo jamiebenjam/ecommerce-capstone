@@ -10,10 +10,9 @@ function AdminEditProduct( {product, editProduct} ){
         price: product.price,
         color: product.color,
         category: product.categories.map((category) => category.name),
-        isActive: product.isActive
     })
 
-    const {title, description, image, price, color, isActive, category} = formState
+    const {title, description, image, price, color, category} = formState
     
     let navigate = useNavigate();
 
@@ -62,10 +61,6 @@ function AdminEditProduct( {product, editProduct} ){
 
                 <label htmlFor="category">Category</label>
                 <input onChange={handleFormChange} type="text" id="category" name="category" value={category}></input>
-
-                <label htmlFor="isActive">In Stock</label>
-                <input onChange={handleFormChange} type="radio" id="isActive" name="isActive" value={isActive}></input>
-
 
                 <br></br>
                 <br></br>

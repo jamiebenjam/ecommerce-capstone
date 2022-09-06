@@ -10,9 +10,9 @@ function UserNewArrivals() {
 
 
     function fetchNewArrivals() {
-        fetch("/newArrivals")
+        fetch("/products")
         .then(response => response.json())
-        .then(data => setProducts(data))
+        .then(data => setProducts(data.sort((a,b) => a.created_at - b.created_at ? 1 : -1)))
     }
 
     useEffect(fetchNewArrivals, []);

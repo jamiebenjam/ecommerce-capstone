@@ -21,12 +21,6 @@ class ProductsController < ApplicationController
         render json: product, status: 202
     end
 
-    def newArrivals
-        render json: Product.all.sort do | a,b |
-            a.created_at > b.created_at ? 1:-1
-        end.first
-    end
-
     private
 
     def product_params

@@ -7,9 +7,11 @@ import AdminAddModal from "./AdminAddModal";
 function AdminProductView(){
     const [products, setProducts] = useState([])
     const [productID, setProductID] = useState(false)
+    const [isActive, setIsActive] = useState(true)
 
     console.log(products)
 
+    
     function fetchProducts() {
         fetch("/products")
         .then(response => response.json())
@@ -20,27 +22,43 @@ function AdminProductView(){
     
     const onAddProduct = ((newProduct) => {
         setProducts((prevProducts) => [...prevProducts, newProduct])
-      })
-
+    })
+    
     const editProduct = (updatedProduct) => {
         setProducts(prevProducts => {
             const newProductArray = prevProducts.map(product => {
-            if(product.id === updatedProduct.id){
-                return updatedProduct
-            } else {
-                return product
-            }
+                if(product.id === updatedProduct.id){
+                    return updatedProduct
+                } else {
+                    return product
+                }
             })
             return newProductArray
         })
         setProductID(false)
     } 
     
+    function handleToggleClick() {
+        setIsActive((isActive) => !isActive);
+        console.log(isActive)
+
+        fetch(`/products/${products.map((product) => product.id)}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(isActive),
+        })
+        .then((r) => r.json())
+        .then((data) => console.log(data))
+        .then(console.log(isActive))
+    }
+
     const productsMap = products.map((product) => {
         return (
             <Table.Row key={product.id}>
                 <Table.Cell collapsing>
-                    <Checkbox slider />
+                    <Checkbox toggle onClick={handleToggleClick}></Checkbox>
                 </Table.Cell>
                 <Table.Cell>
                     {product.title}
