@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Icon, Grid, Header } from 'semantic-ui-react'
 import UserHeaderDropdown from './UserHeaderDropdown';
 
@@ -11,7 +12,7 @@ function UserLandingHeader(){
                 </Grid.Column>
                 
                 <Grid.Column width={12} >
-                    <Header>RAAS</Header>
+                    <Header as={Link} to='/'>RAAS</Header>
                 </Grid.Column>
 
                 <Grid.Column width={1} >

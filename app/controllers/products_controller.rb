@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-    skip_before_action :authorize, only: [:index, :create, :show, :update]
+    skip_before_action :authorize, only: [:index, :create, :show, :update, :newArrivals]
 
     def index
         render json: Product.all, status: :ok
@@ -19,6 +19,12 @@ class ProductsController < ApplicationController
         product = Product.find(params[:id])
         product.update(product_params)
         render json: product, status: 202
+    end
+
+    def newArrivals
+        render json: Product.all.sort do | a,b |
+            a.created_at > b.created_at ? 1:-1
+        end.first
     end
 
     private

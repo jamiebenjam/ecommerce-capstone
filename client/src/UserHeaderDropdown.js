@@ -1,14 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Dropdown } from 'semantic-ui-react';
 
 function UserHeaderDropdown() {
+
+
     return (
         <div>
             <Dropdown icon="bars" pointing className='link item'>
                 <Dropdown.Menu>
                     <Dropdown.Header>Shop</Dropdown.Header>
-                    <Dropdown.Item>Shop All</Dropdown.Item>
-                    <Dropdown.Item>New In</Dropdown.Item>
+                    <Dropdown.Item as={Link} to='/products'>Shop All</Dropdown.Item>
+                    <Dropdown.Item as={Link} to='/newArrivals'>New In</Dropdown.Item>
                     <Dropdown.Item>
                     <Dropdown text='Clothing'>
                         <Dropdown.Menu>

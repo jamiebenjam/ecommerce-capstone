@@ -9,11 +9,11 @@ function AdminEditProduct( {product, editProduct} ){
         image: product.image,
         price: product.price,
         color: product.color,
-        category: product.category,
+        category: product.categories.map((category) => category.name),
         isActive: product.isActive
     })
 
-    const {title, description, image, price, color, category, isActive} = formState
+    const {title, description, image, price, color, isActive, category} = formState
     
     let navigate = useNavigate();
 
@@ -29,7 +29,7 @@ function AdminEditProduct( {product, editProduct} ){
         })
         .then((r) => r.json())
         .then((data) => editProduct(data))
-        .then(navigate('/products'))
+        .then(navigate('/admin'))
     }
     
 
@@ -40,12 +40,6 @@ function AdminEditProduct( {product, editProduct} ){
     }
 
     console.log(formState)
-
-    const options = [
-        { key: 's', text: 'Saree', value: 'saree' },
-        { key: 'f', text: 'Female', value: 'female' },
-        { key: 'o', text: 'Other', value: 'other' },
-      ]
 
     return(
         <div>
@@ -66,7 +60,8 @@ function AdminEditProduct( {product, editProduct} ){
                 <label htmlFor="color">Color</label>
                 <input onChange={handleFormChange} type="text" id="color" name="color" value={color}></input>
 
-                <Form.Field onChange={handleFormChange} control={Select} label='Category' options={options} value={category}/>
+                <label htmlFor="category">Category</label>
+                <input onChange={handleFormChange} type="text" id="category" name="category" value={category}></input>
 
                 <label htmlFor="isActive">In Stock</label>
                 <input onChange={handleFormChange} type="radio" id="isActive" name="isActive" value={isActive}></input>

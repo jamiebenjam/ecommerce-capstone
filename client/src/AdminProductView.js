@@ -52,13 +52,13 @@ function AdminProductView(){
                     <Image src={product.image} size="tiny"/>
                 </Table.Cell>
                 <Table.Cell>
-                    <p>{`$${product.price}`}</p>
+                    <p>${parseFloat(product.price).toFixed(2)}</p>
                 </Table.Cell>
                 <Table.Cell>
                     {product.color}
                 </Table.Cell>
                 <Table.Cell>
-                    {product.category}
+                    {(product.categories.map((category) => category.name))}
                 </Table.Cell>
                 <Table.Cell>
                    <AdminEditModal product={product} editProduct={editProduct} />
