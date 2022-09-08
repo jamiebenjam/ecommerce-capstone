@@ -1,4 +1,4 @@
-import { Form, Container, Button, Select } from 'semantic-ui-react'
+import { Form, Container, Button } from 'semantic-ui-react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -10,6 +10,7 @@ function AdminEditProduct( {product, editProduct} ){
         price: product.price,
         color: product.color,
         category: product.categories.map((category) => category.name),
+
     })
 
     const {title, description, image, price, color, category} = formState

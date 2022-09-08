@@ -3,6 +3,10 @@
   padding-bottom: 2%;
 }
 
+.Filter {
+  float: right;
+}
+
 .App {
   text-align: center;
 }

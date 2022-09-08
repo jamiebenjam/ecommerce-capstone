@@ -22,7 +22,7 @@ c10 = Category.create(name: 'Bag')
 p1 = Product.create(
     title: 'CC3666', 
     description: '3 piece', 
-    image: 'https://cdn.shopify.com/s/files/1/1135/5086/products/chaniiyacholiusa40chaniyacholifornavratrii_900x.jpg?v=1661927717',
+    image: 'https://cdn.shopify.com/s/files/1/1135/5086/products/image_411b2dac-418a-4134-a411-8465f66083b7_540x.jpg?v=1662554510',
     price: 390,
     color: 'Purple, red, blue',
     isActive: true

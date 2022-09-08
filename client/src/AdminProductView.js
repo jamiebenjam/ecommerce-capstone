@@ -9,7 +9,7 @@ function AdminProductView(){
     const [productID, setProductID] = useState(false)
     const [isActive, setIsActive] = useState(true)
 
-    console.log(products)
+    // console.log(products)
 
     
     function fetchProducts() {
@@ -38,27 +38,31 @@ function AdminProductView(){
         setProductID(false)
     } 
     
-    function handleToggleClick() {
+    console.log(productID)
+    
+    
+    function handleToggleClick(id) {
         setIsActive((isActive) => !isActive);
-        console.log(isActive)
 
-        fetch(`/products/${products.map((product) => product.id)}`, {
+        // console.log(isActive)
+
+        fetch(`/products/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(isActive),
+            body: JSON.stringify({isActive: isActive}),
         })
         .then((r) => r.json())
-        .then((data) => console.log(data))
-        .then(console.log(isActive))
+        .then((data) => setIsActive(data.isActive))
+    //     .then(console.log(isActive))
     }
 
     const productsMap = products.map((product) => {
         return (
             <Table.Row key={product.id}>
                 <Table.Cell collapsing>
-                    <Checkbox toggle onClick={handleToggleClick}></Checkbox>
+                    <Checkbox toggle onClick={() => handleToggleClick(product.id)} ></Checkbox>
                 </Table.Cell>
                 <Table.Cell>
                     {product.title}

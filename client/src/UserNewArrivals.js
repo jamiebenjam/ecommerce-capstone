@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import UserLandingHeader from './UserLandingHeader';
 import { Card, Image } from 'semantic-ui-react';
-import Filter from './UserCategoryFilter';
-
+import UserShopHeader from './UserShopHeader';
 
 function UserNewArrivals() {
     const [products, setProducts] = useState([])
@@ -16,6 +15,7 @@ function UserNewArrivals() {
     }
 
     useEffect(fetchNewArrivals, []);
+    
     function handleCategoryChange(category) {
         setSelectedCategory(category);
     }
@@ -54,7 +54,7 @@ function UserNewArrivals() {
     return (
         <div>
             <UserLandingHeader />
-            <Filter selectedCategory={selectedCategory} handleCategoryChange={handleCategoryChange}/>
+            <UserShopHeader selectedCategory={selectedCategory} handleCategoryChange={handleCategoryChange}/>
             <Card.Group itemsPerRow={4}>
                     {productsMap}
             </Card.Group>
