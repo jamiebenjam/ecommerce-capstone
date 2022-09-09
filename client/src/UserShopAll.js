@@ -11,6 +11,9 @@ function UserShopAll({
   displayedProducts,
   productsMap,
   setSelectedCategory,
+  setSelectedSort,
+  selectedSort,
+  setSearch,
 }) {
   return (
     <div>
@@ -22,10 +25,13 @@ function UserShopAll({
         selectedCategory={selectedCategory}
         products={products}
         setSelectedCategory={setSelectedCategory}
+        setSearch={setSearch}
       />
       <UserShopHeader
         selectedCategory={selectedCategory}
         handleCategoryChange={handleCategoryChange}
+        setSelectedSort={setSelectedSort}
+        selectedSort={selectedSort}
       />
       <Card.Group itemsPerRow={4}>{productsMap}</Card.Group>
     </div>

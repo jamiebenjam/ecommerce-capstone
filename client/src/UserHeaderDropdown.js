@@ -9,6 +9,7 @@ function UserHeaderDropdown({
   handleCategoryChange,
   selectedCategory,
   setSelectedCategory,
+  setSearch,
 }) {
   const [categories, setCategories] = useState([]);
 

@@ -8,11 +8,14 @@ import UserNewArrivals from './UserNewArrivals';
 import UserProductItem from './UserProductItem';
 import { Card, Image } from 'semantic-ui-react';
 import UserCart from './UserCart';
+import StripeCard from './StripeCard';
 
 function App() {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [cartProducts, setCartProducts] = useState([]);
+  const [search, setSearch] = useState('');
+  const [selectedSort, setSelectedSort] = useState('default');
 
   function fetchProducts() {
     fetch('/products')
@@ -26,14 +29,47 @@ function App() {
     setSelectedCategory(category);
   }
 
-  const filterProducts = products.filter(product =>
-    product.categories.map(category => category.name).includes(selectedCategory)
+  const filterProducts = () => {
+    if (selectedCategory === 'All') {
+      return products;
+    }
+    return products.filter(product => {
+      return product.categories
+        .map(category => category.name)
+        .includes(selectedCategory);
+    });
+  };
+
+  const sortProducts = () => {
+    // const filterPriceLow = filterProducts().sort(function (a, b) {
+    //   return b.id - a.id;
+    // });
+    // const filterPriceHigh = filterProducts().sort(function (a, b) {
+    //   return a.id - b.id;
+    // });
+    if (selectedSort === 'low') {
+      return filterProducts().sort(function (a, b) {
+        return b.id - a.id;
+      });
+    } else if (selectedSort === 'high') {
+      return filterProducts().sort(function (a, b) {
+        return a.id - b.id;
+      });
+    } else {
+      return filterProducts();
+    }
+  };
+
+  const displayedProducts = sortProducts();
+
+  const searchFilter = displayedProducts.filter(
+    product =>
+      product.title.toLowerCase().includes(search.toLowerCase()) ||
+      product.color.toLowerCase().includes(search.toLowerCase()) ||
+      product.description.toLowerCase().includes(search.toLowerCase())
   );
 
-  const displayedProducts =
-    selectedCategory === 'All' ? products : filterProducts;
-
-  const productsMap = displayedProducts.map(product => {
+  const productsMap = searchFilter.map(product => {
     return (
       <Card key={product.id} as={Link} to={`/products/${product.id}`}>
         <Image src={product.image} wrapped ui={false} />
@@ -99,6 +135,9 @@ function App() {
               filterProducts={filterProducts}
               displayedProducts={displayedProducts}
               productsMap={productsMap}
+              setSelectedSort={setSelectedSort}
+              selectedSort={selectedSort}
+              setSearch={setSearch}
             />
           }
         />
@@ -120,6 +159,7 @@ function App() {
             />
           }
         />
+        <Route path="/card" element={<StripeCard />} />
       </Routes>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Icon, Grid, Header } from 'semantic-ui-react';
+import { Icon, Grid, Header, Search } from 'semantic-ui-react';
 import UserHeaderDropdown from './UserHeaderDropdown';
 
 function UserLandingHeader({
@@ -11,7 +11,12 @@ function UserLandingHeader({
   selectedCategory,
   products,
   setSelectedCategory,
+  setSearch,
 }) {
+  function handleSearchChange(e) {
+    setSearch(e.target.value);
+  }
+
   return (
     <div className="user_header">
       <Grid>
@@ -24,17 +29,18 @@ function UserLandingHeader({
             selectedCategory={selectedCategory}
             products={products}
             setSelectedCategory={setSelectedCategory}
+            setSearch={setSearch}
           />
         </Grid.Column>
 
-        <Grid.Column width={12}>
+        <Grid.Column width={11}>
           <Header as={Link} to="/" size="huge">
             RAAS
           </Header>
         </Grid.Column>
 
-        <Grid.Column width={1}>
-          <Icon name="search" />
+        <Grid.Column width={2}>
+          <input onChange={handleSearchChange} />
         </Grid.Column>
 
         <Grid.Column width={1}>
@@ -44,7 +50,7 @@ function UserLandingHeader({
         <Grid.Column width={1} as={Link} to="/cart">
           <Icon.Group>
             <Icon name="cart" />
-            <Icon corner name="add" />
+            {/* <Icon corner name="add" /> */}
           </Icon.Group>
         </Grid.Column>
       </Grid>
