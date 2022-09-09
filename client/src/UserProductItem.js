@@ -64,7 +64,7 @@ function UserProductItem({ onAddProduct }) {
 
             <Divider hidden />
 
-            <Button fluid onClick={onAddProduct(product)}>
+            <Button fluid onClick={() => onAddProduct(product)}>
               Add To Cart
             </Button>
           </Grid.Column>

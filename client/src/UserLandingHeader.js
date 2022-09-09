@@ -28,7 +28,7 @@ function UserLandingHeader({
         </Grid.Column>
 
         <Grid.Column width={12}>
-          <Header as={Link} to="/">
+          <Header as={Link} to="/" size="huge">
             RAAS
           </Header>
         </Grid.Column>
@@ -42,7 +42,10 @@ function UserLandingHeader({
         </Grid.Column>
 
         <Grid.Column width={1} as={Link} to="/cart">
-          <Icon name="cart" />
+          <Icon.Group>
+            <Icon name="cart" />
+            <Icon corner name="add" />
+          </Icon.Group>
         </Grid.Column>
       </Grid>
     </div>

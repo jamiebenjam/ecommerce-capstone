@@ -26,13 +26,9 @@ function App() {
     setSelectedCategory(category);
   }
 
-  console.log(selectedCategory);
-
   const filterProducts = products.filter(product =>
     product.categories.map(category => category.name).includes(selectedCategory)
   );
-
-  console.log(filterProducts);
 
   const displayedProducts =
     selectedCategory === 'All' ? products : filterProducts;
@@ -50,32 +46,42 @@ function App() {
   });
 
   const onAddProduct = product => {
-    console.log('clicked');
     const exist = cartProducts.find(x => x.id === product.id);
     if (exist) {
       const newCartProducts = cartProducts.map(x =>
         x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
       );
       setCartProducts(newCartProducts);
+      localStorage.setItem('cartProducts', JSON.stringify(newCartProducts));
+    } else {
+      const newCartProducts = [...cartProducts, { ...product, qty: 1 }];
+      setCartProducts(newCartProducts);
+      localStorage.setItem('cartProducts', JSON.stringify(newCartProducts));
     }
   };
-
-  console.log(cartProducts);
 
   const onRemoveProduct = product => {
     const exist = cartProducts.find(x => x.id === product.id);
     if (exist.qty === 1) {
-      setCartProducts(cartProducts.filter(x => x.id !== product.id));
+      const newCartProducts = cartProducts.filter(x => x.id !== product.id);
+      setCartProducts(newCartProducts);
+      localStorage.setItem('cartProducts', JSON.stringify(newCartProducts));
     } else {
-      setCartProducts(
-        cartProducts.map(x =>
-          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
-        )
+      const newCartProducts = cartProducts.map(x =>
+        x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
       );
+      setCartProducts(newCartProducts);
+      localStorage.setItem('cartProducts', JSON.stringify(newCartProducts));
     }
   };
 
-  console.log(cartProducts);
+  useEffect(() => {
+    setCartProducts(
+      localStorage.getItem('cartProducts')
+        ? JSON.parse(localStorage.getItem('cartProducts'))
+        : []
+    );
+  }, []);
 
   return (
     <div className="App">
