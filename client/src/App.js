@@ -16,6 +16,7 @@ function App() {
   const [cartProducts, setCartProducts] = useState([]);
   const [search, setSearch] = useState('');
   const [selectedSort, setSelectedSort] = useState('default');
+  const [toggleAddToCartButton, setToggleAddToCartButton] = useState(false);
 
   function fetchProducts() {
     fetch('/products')
@@ -60,16 +61,16 @@ function App() {
     }
   };
 
-  const displayedProducts = sortProducts();
-
-  const searchFilter = displayedProducts.filter(
+  const searchFilter = sortProducts().filter(
     product =>
       product.title.toLowerCase().includes(search.toLowerCase()) ||
       product.color.toLowerCase().includes(search.toLowerCase()) ||
       product.description.toLowerCase().includes(search.toLowerCase())
   );
 
-  const productsMap = searchFilter.map(product => {
+  const displayedProducts = searchFilter;
+
+  const productsMap = displayedProducts.map(product => {
     return (
       <Card key={product.id} as={Link} to={`/products/${product.id}`}>
         <Image src={product.image} wrapped ui={false} />
@@ -87,7 +88,9 @@ function App() {
       const newCartProducts = cartProducts.map(x =>
         x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
       );
+      setToggleAddToCartButton(toggleAddToCartButton => !toggleAddToCartButton);
       setCartProducts(newCartProducts);
+
       localStorage.setItem('cartProducts', JSON.stringify(newCartProducts));
     } else {
       const newCartProducts = [...cartProducts, { ...product, qty: 1 }];
@@ -138,6 +141,7 @@ function App() {
               setSelectedSort={setSelectedSort}
               selectedSort={selectedSort}
               setSearch={setSearch}
+              cartProducts={cartProducts}
             />
           }
         />
@@ -146,7 +150,11 @@ function App() {
         <Route
           path="/products/:id"
           element={
-            <UserProductItem products={products} onAddProduct={onAddProduct} />
+            <UserProductItem
+              products={products}
+              onAddProduct={onAddProduct}
+              toggleAddToCartButton={toggleAddToCartButton}
+            />
           }
         />
         <Route

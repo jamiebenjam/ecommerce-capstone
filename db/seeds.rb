@@ -100,6 +100,7 @@ p9 = Product.create(
     isActive: true
 )
 
+
 #ProductCategory
 pc1 = ProductCategory.create(product_id: p1.id, category_id: c2.id)
 pc2 = ProductCategory.create(product_id: p2.id, category_id: c1.id)

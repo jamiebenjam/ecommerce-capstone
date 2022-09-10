@@ -14,6 +14,7 @@ function UserShopAll({
   setSelectedSort,
   selectedSort,
   setSearch,
+  cartProducts,
 }) {
   return (
     <div>
@@ -26,6 +27,7 @@ function UserShopAll({
         products={products}
         setSelectedCategory={setSelectedCategory}
         setSearch={setSearch}
+        cartProducts={cartProducts}
       />
       <UserShopHeader
         selectedCategory={selectedCategory}

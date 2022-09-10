@@ -1,5 +1,5 @@
 import React from 'react';
-import Filter from './UserCategoryFilter';
+import Filter from './UserPriceFilter';
 import { Grid, GridColumn } from 'semantic-ui-react';
 
 function UserShopHeader({
@@ -7,6 +7,7 @@ function UserShopHeader({
   handleCategoryChange,
   setSelectedSort,
   selectedSort,
+  cartProducts,
 }) {
   return (
     <div>

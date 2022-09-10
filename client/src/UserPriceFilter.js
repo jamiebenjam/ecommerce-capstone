@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Filter({ selectedSort, setSelectedSort }) {
+function UserPriceFilter({ selectedSort, setSelectedSort }) {
   return (
     <div className="Filter">
       <select
@@ -16,4 +16,4 @@ function Filter({ selectedSort, setSelectedSort }) {
   );
 }
 
-export default Filter;
+export default UserPriceFilter;

@@ -1,6 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Icon, Grid, Header, Search } from 'semantic-ui-react';
+import {
+  Icon,
+  Grid,
+  Header,
+  Button,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Input,
+} from 'semantic-ui-react';
 import UserHeaderDropdown from './UserHeaderDropdown';
 
 function UserLandingHeader({
@@ -12,6 +21,7 @@ function UserLandingHeader({
   products,
   setSelectedCategory,
   setSearch,
+  cartProducts,
 }) {
   function handleSearchChange(e) {
     setSearch(e.target.value);
@@ -39,19 +49,41 @@ function UserLandingHeader({
           </Header>
         </Grid.Column>
 
-        <Grid.Column width={2}>
-          <input onChange={handleSearchChange} />
-        </Grid.Column>
-
         <Grid.Column width={1}>
-          <Icon name="user" />
+          <Dropdown item icon="search" simple>
+            <DropdownMenu direction="left">
+              <DropdownItem>
+                <Input
+                  focus
+                  onChange={handleSearchChange}
+                  placeholder="Search products..."
+                />
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         </Grid.Column>
 
         <Grid.Column width={1} as={Link} to="/cart">
-          <Icon.Group>
-            <Icon name="cart" />
-            {/* <Icon corner name="add" /> */}
-          </Icon.Group>
+          <Icon name="heart" />
+        </Grid.Column>
+
+        <Grid.Column width={1}>
+          <Dropdown item icon="user" simple>
+            <DropdownMenu direction="left">
+              <DropdownItem>
+                <Button secondary>Sign In</Button>
+              </DropdownItem>
+              <DropdownItem>Sign-Up</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </Grid.Column>
+
+        <Grid.Column width={1}>
+          <Dropdown item icon="cart" simple as={Link} to="/cart">
+            <DropdownMenu direction="left">
+              {/* <DropdownItem>{cartProducts}</DropdownItem> */}
+            </DropdownMenu>
+          </Dropdown>
         </Grid.Column>
       </Grid>
     </div>
