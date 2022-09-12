@@ -11,7 +11,6 @@ function UserAccountHome({ setUser, user }) {
     });
   }, []);
 
-  console.log(user);
   return (
     <div>
       <Header as="h3">

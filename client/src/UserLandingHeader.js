@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import UserHeaderDropdown from './UserHeaderDropdown';
 import UserCreateAccount from './UserCreateAccount';
 import UserCartProductDisplay from './UserCartProductDisplay';
+import UserSignIn from './UserSignIn';
+import UserLoggedInHeader from './UserConditionalSignInHeader';
 import {
   Icon,
   Grid,
@@ -27,6 +29,7 @@ function UserLandingHeader({
   cartProducts,
   onAddProduct,
   onRemoveProduct,
+  user,
 }) {
   // const productsPrice = cartProducts.reduce((a, c) => a + c.qty * c.price, 0);
   // const taxPrice = productsPrice * 0.14;
@@ -78,16 +81,7 @@ function UserLandingHeader({
         </Grid.Column>
 
         <Grid.Column width={1}>
-          <Dropdown item icon="user" simple>
-            <DropdownMenu direction="left">
-              <DropdownItem>
-                <Button secondary>Sign In</Button>
-              </DropdownItem>
-              <DropdownItem>
-                <UserCreateAccount />
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <UserLoggedInHeader user={user} />
         </Grid.Column>
 
         <Grid.Column width={1} as={Link} to="/cart">

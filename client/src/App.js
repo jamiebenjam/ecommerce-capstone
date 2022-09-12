@@ -8,10 +8,11 @@ import UserNewArrivals from './UserNewArrivals';
 import UserProductItem from './UserProductItem';
 import { Card, Image } from 'semantic-ui-react';
 import UserCart from './UserCart';
-import StripeCard from './StripeCard';
+// import StripeCard from './StripeCard';
 import UserLandingHeader from './UserLandingHeader';
 import UserCreateAccount from './UserCreateAccount';
 import UserAccountHome from './UserAccountHome';
+import UserSignIn from './UserSignIn';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -118,6 +119,8 @@ function App() {
     );
   }, []);
 
+  console.log(user);
+
   return (
     <div className="App">
       <UserLandingHeader
@@ -132,6 +135,7 @@ function App() {
         cartProducts={cartProducts}
         onAddProduct={onAddProduct}
         onRemoveProduct={onRemoveProduct}
+        user={user}
       />
       <Routes>
         <Route path="/" element={<UserLandingView />} />
@@ -181,6 +185,7 @@ function App() {
           path="/profile"
           element={<UserAccountHome setUser={setUser} user={user} />}
         />
+        <Route path="/signin" element={<UserSignIn setUser={setUser} />} />
       </Routes>
     </div>
   );
