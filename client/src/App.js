@@ -9,6 +9,7 @@ import UserProductItem from './UserProductItem';
 import { Card, Image } from 'semantic-ui-react';
 import UserCart from './UserCart';
 import StripeCard from './StripeCard';
+import UserLandingHeader from './UserLandingHeader';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -124,6 +125,19 @@ function App() {
 
   return (
     <div className="App">
+      <UserLandingHeader
+        filterProducts={filterProducts}
+        displayedProducts={displayedProducts}
+        productsMap={productsMap}
+        handleCategoryChange={handleCategoryChange}
+        selectedCategory={selectedCategory}
+        products={products}
+        setSelectedCategory={setSelectedCategory}
+        setSearch={setSearch}
+        cartProducts={cartProducts}
+        onAddProduct={onAddProduct}
+        onRemoveProduct={onRemoveProduct}
+      />
       <Routes>
         <Route path="/" element={<UserLandingView />} />
         <Route

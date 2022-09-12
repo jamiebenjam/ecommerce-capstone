@@ -18,7 +18,7 @@ function UserShopAll({
 }) {
   return (
     <div>
-      <UserLandingHeader
+      {/* <UserLandingHeader
         filterProducts={filterProducts}
         displayedProducts={displayedProducts}
         productsMap={productsMap}
@@ -28,7 +28,7 @@ function UserShopAll({
         setSelectedCategory={setSelectedCategory}
         setSearch={setSearch}
         cartProducts={cartProducts}
-      />
+      /> */}
       <UserShopHeader
         selectedCategory={selectedCategory}
         handleCategoryChange={handleCategoryChange}

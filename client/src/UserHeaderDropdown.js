@@ -2,15 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Dropdown } from 'semantic-ui-react';
 
-function UserHeaderDropdown({
-  filterProducts,
-  displayedProducts,
-  productsMap,
-  handleCategoryChange,
-  selectedCategory,
-  setSelectedCategory,
-  setSearch,
-}) {
+function UserHeaderDropdown({ setSelectedCategory }) {
   const [categories, setCategories] = useState([]);
 
   function fetchCategories() {
@@ -25,7 +17,6 @@ function UserHeaderDropdown({
     <div>
       <Dropdown icon="bars" pointing className="link item">
         <Dropdown.Menu>
-          <Dropdown.Header>Shop</Dropdown.Header>
           <Dropdown.Item
             as={Link}
             to="/products"

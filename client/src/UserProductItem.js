@@ -9,6 +9,7 @@ import {
   Icon,
   Button,
   Divider,
+  Modal,
 } from 'semantic-ui-react';
 import UserLandingHeader from './UserLandingHeader';
 import UserBreadcrumb from './UserBreadcrumb';
@@ -69,9 +70,17 @@ function UserProductItem({ onAddProduct, toggleAddToCartButton }) {
 
           <Divider hidden />
 
-          <Button fluid toggle onClick={() => onAddProduct(product)}>
-            Add To Cart
-          </Button>
+          <Modal
+            size="mini"
+            trigger={
+              <Button fluid toggle onClick={() => onAddProduct(product)}>
+                Add To Cart
+              </Button>
+            }
+            header="Thank you!"
+            content="Your item has been added to the cart"
+            actions={['Close']}
+          />
         </Grid.Column>
       </Grid>
     </div>

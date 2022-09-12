@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import UserCartProductDisplay from './UserCartProductDisplay';
 import {
   Icon,
   Grid,
@@ -9,6 +10,7 @@ import {
   DropdownMenu,
   DropdownItem,
   Input,
+  Popup,
 } from 'semantic-ui-react';
 import UserHeaderDropdown from './UserHeaderDropdown';
 
@@ -22,7 +24,14 @@ function UserLandingHeader({
   setSelectedCategory,
   setSearch,
   cartProducts,
+  onAddProduct,
+  onRemoveProduct,
 }) {
+  const productsPrice = cartProducts.reduce((a, c) => a + c.qty * c.price, 0);
+  const taxPrice = productsPrice * 0.14;
+  const shippingPrice = productsPrice > 200 ? 0 : 20;
+  const totalPrice = productsPrice + taxPrice + shippingPrice;
+
   function handleSearchChange(e) {
     setSearch(e.target.value);
   }
@@ -43,7 +52,7 @@ function UserLandingHeader({
           />
         </Grid.Column>
 
-        <Grid.Column width={11}>
+        <Grid.Column width={10}>
           <Header as={Link} to="/" size="huge">
             RAAS
           </Header>
@@ -78,12 +87,27 @@ function UserLandingHeader({
           </Dropdown>
         </Grid.Column>
 
-        <Grid.Column width={1}>
-          <Dropdown item icon="cart" simple as={Link} to="/cart">
-            <DropdownMenu direction="left">
-              {/* <DropdownItem>{cartProducts}</DropdownItem> */}
-            </DropdownMenu>
-          </Dropdown>
+        <Grid.Column width={1} as={Link} to="/cart">
+          <Popup
+            trigger={<Icon name="cart" />}
+            flowing
+            hoverable
+            size="mini"
+            wide
+            content={
+              <div>
+                <UserCartProductDisplay
+                  cartProducts={cartProducts}
+                  onAddProduct={onAddProduct}
+                  onRemoveProduct={onRemoveProduct}
+                />
+                <strong>
+                  Total Price | ${parseFloat(totalPrice).toFixed(2)}
+                </strong>
+              </div>
+            }
+            position="bottom right"
+          />
         </Grid.Column>
       </Grid>
     </div>
