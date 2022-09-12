@@ -19,6 +19,7 @@ function App() {
   const [cartProducts, setCartProducts] = useState([]);
   const [search, setSearch] = useState('');
   const [selectedSort, setSelectedSort] = useState('default');
+  const [user, setUser] = useState({});
 
   function fetchProducts() {
     fetch('/products')
@@ -171,9 +172,15 @@ function App() {
             />
           }
         />
-        <Route path="/card" element={<StripeCard />} />
-        <Route path="/createAccount" element={<UserCreateAccount />} />
-        <Route path="/profile" element={<UserAccountHome />} />
+        {/* <Route path="/card" element={<StripeCard />} /> */}
+        <Route
+          path="/createAccount"
+          element={<UserCreateAccount setUser={setUser} />}
+        />
+        <Route
+          path="/profile"
+          element={<UserAccountHome setUser={setUser} user={user} />}
+        />
       </Routes>
     </div>
   );

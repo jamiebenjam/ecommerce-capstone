@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserCreateAccountModal from './UserCreateAccountModal';
 
-function UserCreateAccount() {
+function UserCreateAccount({ setUser }) {
   const [formState, setFormState] = useState({});
-  const [user, setUser] = useState({});
 
   let navigate = useNavigate();
 
