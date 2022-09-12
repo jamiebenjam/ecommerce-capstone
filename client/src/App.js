@@ -10,6 +10,8 @@ import { Card, Image } from 'semantic-ui-react';
 import UserCart from './UserCart';
 import StripeCard from './StripeCard';
 import UserLandingHeader from './UserLandingHeader';
+import UserCreateAccount from './UserCreateAccount';
+import UserAccountHome from './UserAccountHome';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -17,7 +19,6 @@ function App() {
   const [cartProducts, setCartProducts] = useState([]);
   const [search, setSearch] = useState('');
   const [selectedSort, setSelectedSort] = useState('default');
-  const [toggleAddToCartButton, setToggleAddToCartButton] = useState(false);
 
   function fetchProducts() {
     fetch('/products')
@@ -43,12 +44,6 @@ function App() {
   };
 
   const sortProducts = () => {
-    // const filterPriceLow = filterProducts().sort(function (a, b) {
-    //   return b.id - a.id;
-    // });
-    // const filterPriceHigh = filterProducts().sort(function (a, b) {
-    //   return a.id - b.id;
-    // });
     if (selectedSort === 'low') {
       return filterProducts().sort(function (a, b) {
         return b.id - a.id;
@@ -89,7 +84,6 @@ function App() {
       const newCartProducts = cartProducts.map(x =>
         x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
       );
-      setToggleAddToCartButton(toggleAddToCartButton => !toggleAddToCartButton);
       setCartProducts(newCartProducts);
 
       localStorage.setItem('cartProducts', JSON.stringify(newCartProducts));
@@ -164,11 +158,7 @@ function App() {
         <Route
           path="/products/:id"
           element={
-            <UserProductItem
-              products={products}
-              onAddProduct={onAddProduct}
-              toggleAddToCartButton={toggleAddToCartButton}
-            />
+            <UserProductItem products={products} onAddProduct={onAddProduct} />
           }
         />
         <Route
@@ -182,6 +172,8 @@ function App() {
           }
         />
         <Route path="/card" element={<StripeCard />} />
+        <Route path="/createAccount" element={<UserCreateAccount />} />
+        <Route path="/profile" element={<UserAccountHome />} />
       </Routes>
     </div>
   );

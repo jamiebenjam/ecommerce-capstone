@@ -35,8 +35,6 @@ function UserNewArrivals() {
     })
   );
 
-  console.log(products);
-
   const productsMap = selectedProducts?.map(product => {
     return (
       <Card key={product.id}>
@@ -44,9 +42,6 @@ function UserNewArrivals() {
         <Card.Content>
           <Card.Header>{product.title}</Card.Header>
           <Card.Meta>${parseFloat(product.price).toFixed(2)}</Card.Meta>
-          {/* {product.categories.map((category) =>{
-                        return <Card.Meta key={category.id} >{category.name}</Card.Meta>
-                    })} */}
         </Card.Content>
       </Card>
     );

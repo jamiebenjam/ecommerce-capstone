@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import UserHeaderDropdown from './UserHeaderDropdown';
+import UserCreateAccount from './UserCreateAccount';
 import UserCartProductDisplay from './UserCartProductDisplay';
 import {
   Icon,
@@ -12,7 +14,6 @@ import {
   Input,
   Popup,
 } from 'semantic-ui-react';
-import UserHeaderDropdown from './UserHeaderDropdown';
 
 function UserLandingHeader({
   filterProducts,
@@ -27,10 +28,10 @@ function UserLandingHeader({
   onAddProduct,
   onRemoveProduct,
 }) {
-  const productsPrice = cartProducts.reduce((a, c) => a + c.qty * c.price, 0);
-  const taxPrice = productsPrice * 0.14;
-  const shippingPrice = productsPrice > 200 ? 0 : 20;
-  const totalPrice = productsPrice + taxPrice + shippingPrice;
+  // const productsPrice = cartProducts.reduce((a, c) => a + c.qty * c.price, 0);
+  // const taxPrice = productsPrice * 0.14;
+  // const shippingPrice = productsPrice > 200 ? 0 : 20;
+  // const totalPrice = productsPrice + taxPrice + shippingPrice;
 
   function handleSearchChange(e) {
     setSearch(e.target.value);
@@ -82,7 +83,9 @@ function UserLandingHeader({
               <DropdownItem>
                 <Button secondary>Sign In</Button>
               </DropdownItem>
-              <DropdownItem>Sign-Up</DropdownItem>
+              <DropdownItem>
+                <UserCreateAccount />
+              </DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </Grid.Column>
@@ -101,9 +104,9 @@ function UserLandingHeader({
                   onAddProduct={onAddProduct}
                   onRemoveProduct={onRemoveProduct}
                 />
-                <strong>
+                {/* <strong>
                   Total Price | ${parseFloat(totalPrice).toFixed(2)}
-                </strong>
+                </strong> */}
               </div>
             }
             position="bottom right"

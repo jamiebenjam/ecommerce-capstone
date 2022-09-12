@@ -11,10 +11,9 @@ import {
   Divider,
   Modal,
 } from 'semantic-ui-react';
-import UserLandingHeader from './UserLandingHeader';
 import UserBreadcrumb from './UserBreadcrumb';
 
-function UserProductItem({ onAddProduct, toggleAddToCartButton }) {
+function UserProductItem({ onAddProduct }) {
   const [product, setProduct] = useState([]);
 
   let params = useParams();
@@ -27,14 +26,8 @@ function UserProductItem({ onAddProduct, toggleAddToCartButton }) {
 
   useEffect(fetchProduct, []);
 
-  const primary = toggleAddToCartButton ? 'Primary' : 'Secondary';
-
-  console.log(toggleAddToCartButton);
-  console.log(primary);
-
   return (
     <div>
-      <UserLandingHeader />
       <Grid className="product_item_container" padded={true} textAlign="left">
         <Grid.Column width={8}>
           <Image size="huge" src={product.image} />
