@@ -8,6 +8,8 @@ function AdminProductView() {
   const [productID, setProductID] = useState(false);
   const [isActive, setIsActive] = useState(true);
 
+  console.log(productID);
+
   function fetchProducts() {
     fetch('/products')
       .then(response => response.json())
@@ -33,8 +35,6 @@ function AdminProductView() {
     });
     setProductID(false);
   };
-
-  console.log(productID);
 
   function handleToggleClick(id) {
     setIsActive(isActive => !isActive);

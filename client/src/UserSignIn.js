@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import UserSignInModal from './UserSignInModal';
-import { useNavigate } from 'react-router-dom';
 
 function UserSignIn({ setUser }) {
   const [formState, setFormState] = useState({});

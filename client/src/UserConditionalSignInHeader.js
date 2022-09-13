@@ -5,8 +5,6 @@ import UserCreateAccount from './UserCreateAccount';
 import { Link } from 'react-router-dom';
 
 function UserLoggedInHeader({ user, setUser }) {
-  console.log(user);
-  console.log(user.email);
   if (user.email === 'admin') {
     return (
       <div>

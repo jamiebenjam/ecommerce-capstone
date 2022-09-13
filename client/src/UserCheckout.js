@@ -1,14 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import {
-  Grid,
-  GridColumn,
-  Button,
-  Header,
-  Container,
-  Divider,
-} from 'semantic-ui-react';
-import UserCartProductDisplay from './UserCartProductDisplay';
+import { Button, Header, Container, Divider } from 'semantic-ui-react';
 import UserCheckoutView from './UserCheckoutView';
 import UserSignIn from './UserSignIn';
 

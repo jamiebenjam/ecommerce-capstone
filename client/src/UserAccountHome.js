@@ -1,25 +1,9 @@
-import React, { useEffect } from 'react';
-import {
-  Header,
-  Dropdown,
-  Menu,
-  Grid,
-  Image,
-  Button,
-  Divider,
-} from 'semantic-ui-react';
+import React from 'react';
+import { Header, Menu, Grid, Image, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import UserLogOut from './UserLogOut';
 
 function UserAccountHome({ setUser, user }) {
-  // useEffect(() => {
-  //   fetch('/me').then(r => {
-  //     if (r.ok) {
-  //       r.json().then(user => setUser(user));
-  //     }
-  //   });
-  // }, [setUser]);
-
   return (
     <div>
       <Grid>

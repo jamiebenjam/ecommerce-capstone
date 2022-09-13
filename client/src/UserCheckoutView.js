@@ -10,7 +10,6 @@ import {
   Image,
   Segment,
 } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 
 function UserCheckoutView({ cartProducts, onAddProduct, onRemoveProduct }) {
   const productsPrice = cartProducts.reduce((a, c) => a + c.qty * c.price, 0);
