@@ -14,6 +14,7 @@ import UserCreateAccount from './UserCreateAccount';
 import UserAccountHome from './UserAccountHome';
 import UserSignIn from './UserSignIn';
 import UserProfileAccount from './UserProfileAccount';
+import UserCheckout from './UserCheckout';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -23,13 +24,13 @@ function App() {
   const [selectedSort, setSelectedSort] = useState('default');
   const [user, setUser] = useState({});
 
-  // useEffect(() => {
-  //   fetch('/me').then(r => {
-  //     if (r.ok) {
-  //       r.json().then(user => setUser(user));
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    fetch('/me').then(r => {
+      if (r.ok) {
+        r.json().then(user => setUser(user));
+      }
+    });
+  }, []);
 
   function fetchProducts() {
     fetch('/products')
@@ -205,6 +206,18 @@ function App() {
         <Route
           path="/profile/account"
           element={<UserProfileAccount user={user} setUser={setUser} />}
+        />
+        <Route
+          path="/cart/checkout"
+          element={
+            <UserCheckout
+              cartProducts={cartProducts}
+              user={user}
+              setUser={setUser}
+              onAddProduct={onAddProduct}
+              onRemoveProduct={onRemoveProduct}
+            />
+          }
         />
       </Routes>
     </div>

@@ -1,14 +1,11 @@
-import AdminProductView from "./AdminProductView";
-import UserLandingHeader from "./UserLandingHeader";
+import AdminProductView from './AdminProductView';
 
-function AdminLanding(){
-
-   return(
+function AdminLanding() {
+  return (
     <div>
-         <UserLandingHeader />
-         <AdminProductView />
+      <AdminProductView />
     </div>
-   )
+  );
 }
 
 export default AdminLanding;

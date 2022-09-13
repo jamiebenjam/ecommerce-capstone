@@ -8,7 +8,6 @@ function UserCartProductDisplay({
 }) {
   return (
     <div>
-      {cartProducts.length === 0 && <div>Cart is empty</div>}
       {cartProducts.map(product => {
         return (
           <Card key={product.id} fluid floated="left">

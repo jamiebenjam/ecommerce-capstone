@@ -12,13 +12,13 @@ import { Link } from 'react-router-dom';
 import UserLogOut from './UserLogOut';
 
 function UserAccountHome({ setUser, user }) {
-  useEffect(() => {
-    fetch('/me').then(r => {
-      if (r.ok) {
-        r.json().then(user => setUser(user));
-      }
-    });
-  }, [setUser]);
+  // useEffect(() => {
+  //   fetch('/me').then(r => {
+  //     if (r.ok) {
+  //       r.json().then(user => setUser(user));
+  //     }
+  //   });
+  // }, [setUser]);
 
   return (
     <div>

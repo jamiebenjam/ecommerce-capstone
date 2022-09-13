@@ -5,7 +5,24 @@ import UserCreateAccount from './UserCreateAccount';
 import { Link } from 'react-router-dom';
 
 function UserLoggedInHeader({ user, setUser }) {
-  if (user.id >= 1) {
+  console.log(user);
+  console.log(user.email);
+  if (user.email === 'admin') {
+    return (
+      <div>
+        <Dropdown item icon="user" simple>
+          <Dropdown.Menu direction="left">
+            <Dropdown.Item>Welcome back, {user.first_name}!</Dropdown.Item>
+            <Dropdown.Item>
+              <Button as={Link} to="/admin">
+                Inventory
+              </Button>
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
+    );
+  } else if (user.id >= 1) {
     return (
       <div>
         <Dropdown item icon="user" simple>
