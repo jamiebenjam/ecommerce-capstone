@@ -1,15 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import UserHeaderDropdown from './UserHeaderDropdown';
-import UserCreateAccount from './UserCreateAccount';
 import UserCartProductDisplay from './UserCartProductDisplay';
-import UserSignIn from './UserSignIn';
 import UserLoggedInHeader from './UserConditionalSignInHeader';
 import {
   Icon,
   Grid,
   Header,
-  Button,
   Dropdown,
   DropdownMenu,
   DropdownItem,
@@ -30,12 +27,8 @@ function UserLandingHeader({
   onAddProduct,
   onRemoveProduct,
   user,
+  setUser,
 }) {
-  // const productsPrice = cartProducts.reduce((a, c) => a + c.qty * c.price, 0);
-  // const taxPrice = productsPrice * 0.14;
-  // const shippingPrice = productsPrice > 200 ? 0 : 20;
-  // const totalPrice = productsPrice + taxPrice + shippingPrice;
-
   function handleSearchChange(e) {
     setSearch(e.target.value);
   }
@@ -43,7 +36,7 @@ function UserLandingHeader({
   return (
     <div className="user_header">
       <Grid>
-        <Grid.Column float="left" width={1}>
+        <Grid.Column floated="left" width={1}>
           <UserHeaderDropdown
             filterProducts={filterProducts}
             displayedProducts={displayedProducts}
@@ -81,7 +74,7 @@ function UserLandingHeader({
         </Grid.Column>
 
         <Grid.Column width={1}>
-          <UserLoggedInHeader user={user} />
+          <UserLoggedInHeader user={user} setUser={setUser} />
         </Grid.Column>
 
         <Grid.Column width={1} as={Link} to="/cart">
@@ -98,9 +91,6 @@ function UserLandingHeader({
                   onAddProduct={onAddProduct}
                   onRemoveProduct={onRemoveProduct}
                 />
-                {/* <strong>
-                  Total Price | ${parseFloat(totalPrice).toFixed(2)}
-                </strong> */}
               </div>
             }
             position="bottom right"

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Checkbox, Form, Modal } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Menu, Modal } from 'semantic-ui-react';
 
 function UserCreateAccountModal({ handleFormChange, handleSubmit }) {
   const [open, setOpen] = useState(false);
@@ -12,7 +12,7 @@ function UserCreateAccountModal({ handleFormChange, handleSubmit }) {
           onClose={() => setOpen(false)}
           onOpen={() => setOpen(true)}
           open={open}
-          trigger={<Button>Sign Up</Button>}
+          trigger={<Menu.Item>Not a Member yet? Join here.</Menu.Item>}
         >
           <Modal.Header>Create an account</Modal.Header>
           <Modal.Content>

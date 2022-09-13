@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 
 function UserLogOut({ setUser }) {
   let navigate = useNavigate();
@@ -8,7 +8,7 @@ function UserLogOut({ setUser }) {
   function handleLogOut() {
     fetch('/logout', { method: 'DELETE' }).then(r => {
       if (r.ok) {
-        setUser(null);
+        setUser({});
       }
     });
     navigate('/');
@@ -16,7 +16,7 @@ function UserLogOut({ setUser }) {
 
   return (
     <div>
-      <Button onClick={handleLogOut}>Log Out</Button>
+      <Menu.Item onClick={handleLogOut}>Log Out</Menu.Item>
     </div>
   );
 }

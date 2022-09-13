@@ -13,6 +13,7 @@ import UserLandingHeader from './UserLandingHeader';
 import UserCreateAccount from './UserCreateAccount';
 import UserAccountHome from './UserAccountHome';
 import UserSignIn from './UserSignIn';
+import UserProfileAccount from './UserProfileAccount';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -21,6 +22,14 @@ function App() {
   const [search, setSearch] = useState('');
   const [selectedSort, setSelectedSort] = useState('default');
   const [user, setUser] = useState({});
+
+  // useEffect(() => {
+  //   fetch('/me').then(r => {
+  //     if (r.ok) {
+  //       r.json().then(user => setUser(user));
+  //     }
+  //   });
+  // }, []);
 
   function fetchProducts() {
     fetch('/products')
@@ -119,8 +128,6 @@ function App() {
     );
   }, []);
 
-  console.log(user);
-
   return (
     <div className="App">
       <UserLandingHeader
@@ -136,6 +143,7 @@ function App() {
         onAddProduct={onAddProduct}
         onRemoveProduct={onRemoveProduct}
         user={user}
+        setUser={setUser}
       />
       <Routes>
         <Route path="/" element={<UserLandingView />} />
@@ -158,7 +166,15 @@ function App() {
             />
           }
         />
-        <Route path="/newArrivals" element={<UserNewArrivals />} />
+        <Route
+          path="/newArrivals"
+          element={
+            <UserNewArrivals
+              handleCategoryChange={handleCategoryChange}
+              selectedCategory={selectedCategory}
+            />
+          }
+        />
         <Route path="/admin" element={<AdminLanding />} />
         <Route
           path="/products/:id"
@@ -186,6 +202,10 @@ function App() {
           element={<UserAccountHome setUser={setUser} user={user} />}
         />
         <Route path="/signin" element={<UserSignIn setUser={setUser} />} />
+        <Route
+          path="/profile/account"
+          element={<UserProfileAccount user={user} setUser={setUser} />}
+        />
       </Routes>
     </div>
   );

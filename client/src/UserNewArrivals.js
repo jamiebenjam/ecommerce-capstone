@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import UserLandingHeader from './UserLandingHeader';
 import { Card, Image } from 'semantic-ui-react';
 import UserShopHeader from './UserShopHeader';
 
@@ -49,7 +48,6 @@ function UserNewArrivals() {
 
   return (
     <div>
-      {/* <UserLandingHeader /> */}
       <UserShopHeader
         selectedCategory={selectedCategory}
         handleCategoryChange={handleCategoryChange}

@@ -4,9 +4,7 @@ import UserSignIn from './UserSignIn';
 import UserCreateAccount from './UserCreateAccount';
 import { Link } from 'react-router-dom';
 
-function UserLoggedInHeader({ user }) {
-  console.log(user);
-  console.log(user.id);
+function UserLoggedInHeader({ user, setUser }) {
   if (user.id >= 1) {
     return (
       <div>
@@ -28,7 +26,7 @@ function UserLoggedInHeader({ user }) {
         <Dropdown item icon="user" simple>
           <Dropdown.Menu direction="left">
             <Dropdown.Item>
-              <UserSignIn />
+              <UserSignIn setUser={setUser} />
             </Dropdown.Item>
             <Dropdown.Item>
               <UserCreateAccount />

@@ -24,7 +24,7 @@ function UserSignIn({ setUser }) {
     }).then(r => {
       if (r.ok) {
         r.json()
-          .then(data => console.log(data))
+          .then(data => setUser(data))
           .then(navigate('/profile'));
       } else {
         r.json().then(err => setErrors(err.errors));

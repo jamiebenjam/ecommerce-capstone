@@ -12,7 +12,11 @@ function UserSignInModal({ handleSubmit, handleFormChange, errors }) {
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
-        trigger={<Button>Sign In</Button>}
+        trigger={
+          <Button secondary fluid>
+            Sign In
+          </Button>
+        }
       >
         <Modal.Header>Sign in</Modal.Header>
         <Modal.Content>
