@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Dropdown } from 'semantic-ui-react';
+import { Button, Divider, Dropdown } from 'semantic-ui-react';
 import UserSignIn from './UserSignIn';
 import UserCreateAccount from './UserCreateAccount';
 import { Link } from 'react-router-dom';
+import UserLogOut from './UserLogOut';
 
 function UserLoggedInHeader({ user, setUser }) {
   if (user.email === 'admin') {
@@ -15,6 +16,9 @@ function UserLoggedInHeader({ user, setUser }) {
               <Button as={Link} to="/admin">
                 Inventory
               </Button>
+              <Divider></Divider>
+
+              <UserLogOut setUser={setUser} />
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
