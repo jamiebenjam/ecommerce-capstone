@@ -1,16 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import UserCartProductDisplay from './UserCartProductDisplay';
-import { Grid, Button, Header, Container, Divider } from 'semantic-ui-react';
+import {
+  Grid,
+  Button,
+  Header,
+  Container,
+  Divider,
+  Step,
+} from 'semantic-ui-react';
 
 function UserCart({ cartProducts, onAddProduct, onRemoveProduct }) {
   const productsPrice = cartProducts.reduce((a, c) => a + c.qty * c.price, 0);
 
-  function freeShipping() {
+  function shippingPrice() {
     if (productsPrice > 99) {
       return 0 && <div>FREE shipping</div>;
     } else if (productsPrice < 99) {
       return 7.89;
+    }
+  }
+
+  function freeShipping() {
+    if (shippingPrice() === 0) {
+      return <Header sub>FREE shipping</Header>;
+    } else {
+      return <div>${parseFloat(shippingPrice()).toFixed(2)}</div>;
     }
   }
 
@@ -32,20 +47,41 @@ function UserCart({ cartProducts, onAddProduct, onRemoveProduct }) {
             <Grid.Column width={4}>
               {cartProducts.length !== 0 && (
                 <>
-                  {/* <Header as="h2">Items Price</Header>
-                  <Header as="h4">
-                    ${parseFloat(productsPrice).toFixed(2)}
-                  </Header> */}
-                  <span>Shipping</span>
-                  <span> ${parseFloat(freeShipping()).toFixed(2)}</span>
-
-                  <div>EST Tax | Calculated at Checkout</div>
+                  <Step.Group fluid size="mini">
+                    <Step icon="truck" description="Free shipping over $99" />
+                  </Step.Group>
+                  <Divider hidden></Divider>
+                  <Header sub floated="left">
+                    Shipping
+                  </Header>
+                  <Header sub floated="right">
+                    {freeShipping()}
+                  </Header>
+                  <Divider hidden></Divider>
                   <Divider hidden></Divider>
 
-                  <strong>Total Price</strong>
-                  <div>${parseFloat(productsPrice).toFixed(2)}</div>
+                  <Header sub floated="left">
+                    EST Tax
+                  </Header>
+                  <Header sub floated="right">
+                    Calculated at Checkout
+                  </Header>
+                  <Divider hidden></Divider>
+                  <Divider hidden></Divider>
+                  <Divider></Divider>
+                  <Header sub floated="left">
+                    Total Price
+                  </Header>
+                  <Header sub floated="right">
+                    $
+                    {(
+                      parseFloat(productsPrice) + parseFloat(shippingPrice())
+                    ).toFixed(2)}
+                  </Header>
                 </>
               )}
+              <Divider hidden></Divider>
+              <Divider hidden></Divider>
               <Divider hidden></Divider>
               <Button as={Link} to="/cart/checkout" size="large">
                 Continue to checkout

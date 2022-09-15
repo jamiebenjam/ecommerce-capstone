@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import UserHeaderDropdown from './UserHeaderDropdown';
-import UserCartProductDisplay from './UserCartProductDisplay';
+import UserCartPopup from './UserCartPopup';
 import UserLoggedInHeader from './UserConditionalSignInHeader';
 import {
   Icon,
@@ -28,6 +28,7 @@ function UserLandingHeader({
   onRemoveProduct,
   user,
   setUser,
+  totalItems,
 }) {
   function handleSearchChange(e) {
     setSearch(e.target.value);
@@ -78,6 +79,7 @@ function UserLandingHeader({
         </Grid.Column>
 
         <Grid.Column width={1} as={Link} to="/cart">
+          <span>({totalItems})</span>
           <Popup
             trigger={<Icon name="cart" />}
             flowing
@@ -86,10 +88,11 @@ function UserLandingHeader({
             wide
             content={
               <div>
-                <UserCartProductDisplay
+                <UserCartPopup
                   cartProducts={cartProducts}
                   onAddProduct={onAddProduct}
                   onRemoveProduct={onRemoveProduct}
+                  totalItems={totalItems}
                 />
               </div>
             }

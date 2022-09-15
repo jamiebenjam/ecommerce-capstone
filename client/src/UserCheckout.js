@@ -9,6 +9,9 @@ function UserCheckout({
   setUser,
   onAddProduct,
   onRemoveProduct,
+  totalItems,
+  setCartProducts,
+  setOrders,
 }) {
   if (user.id >= 1) {
     return (
@@ -17,6 +20,10 @@ function UserCheckout({
           cartProducts={cartProducts}
           onAddProduct={onAddProduct}
           onRemoveProduct={onRemoveProduct}
+          totalItems={totalItems}
+          user={user}
+          setCartProducts={setCartProducts}
+          setOrders={setOrders}
         />
       </div>
     );

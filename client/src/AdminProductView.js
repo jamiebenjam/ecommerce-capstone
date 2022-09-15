@@ -8,7 +8,7 @@ function AdminProductView() {
   const [productID, setProductID] = useState(false);
   const [isActive, setIsActive] = useState(true);
 
-  console.log(productID);
+  console.log(isActive);
 
   function fetchProducts() {
     fetch('/products')
@@ -81,7 +81,6 @@ function AdminProductView() {
   return (
     <div>
       <br></br>
-
       <Container>
         <Table fixed size="small" padded="very">
           <Table.Header>

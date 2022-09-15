@@ -4,6 +4,7 @@ import UserSignIn from './UserSignIn';
 import UserCreateAccount from './UserCreateAccount';
 import { Link } from 'react-router-dom';
 import UserLogOut from './UserLogOut';
+import './App.css';
 
 function UserLoggedInHeader({ user, setUser }) {
   if (user.email === 'admin') {
@@ -13,8 +14,35 @@ function UserLoggedInHeader({ user, setUser }) {
           <Dropdown.Menu direction="left">
             <Dropdown.Item>Welcome back, {user.first_name}!</Dropdown.Item>
             <Dropdown.Item>
-              <Button as={Link} to="/admin">
+              <Button
+                basic
+                color="black"
+                content="Black"
+                as={Link}
+                to="/admin"
+                style={{ borderRadius: 0 }}
+              >
                 Inventory
+              </Button>
+              <Button
+                basic
+                color="black"
+                content="Black"
+                as={Link}
+                to="/admin/orders"
+                style={{ borderRadius: 0 }}
+              >
+                Orders
+              </Button>
+              <Button
+                basic
+                color="black"
+                content="Black"
+                as={Link}
+                to="/profile"
+                style={{ borderRadius: 0 }}
+              >
+                Profile
               </Button>
               <Divider></Divider>
 
@@ -34,6 +62,9 @@ function UserLoggedInHeader({ user, setUser }) {
               <Button as={Link} to="/profile">
                 Profile
               </Button>
+              <Divider></Divider>
+
+              <UserLogOut setUser={setUser} />
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

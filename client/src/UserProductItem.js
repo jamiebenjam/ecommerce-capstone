@@ -31,7 +31,7 @@ function UserProductItem({ onAddProduct }) {
         <Grid.Column width={8}>
           <Image size="huge" src={product.image} />
         </Grid.Column>
-        <Grid.Column width={8}>
+        <Grid.Column width={5}>
           <UserBreadcrumb product={product} />
 
           <Divider hidden />
@@ -65,8 +65,20 @@ function UserProductItem({ onAddProduct }) {
           <Modal
             size="mini"
             trigger={
-              <Button fluid toggle onClick={() => onAddProduct(product)}>
-                Add To Cart
+              <Button
+                basic
+                color="teal"
+                content="teal"
+                animated
+                fluid
+                toggle
+                onClick={() => onAddProduct(product)}
+                style={{ borderRadius: 0 }}
+              >
+                <Button.Content visible>Add To Cart</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="arrow right" />
+                </Button.Content>
               </Button>
             }
             header="Thank you!"

@@ -1,9 +1,17 @@
-import React from 'react';
-import { Header, Menu, Grid, Image, Divider } from 'semantic-ui-react';
+import React, { useState, useEffect } from 'react';
+import { Card, Menu, Grid, Image, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import UserLogOut from './UserLogOut';
 
-function UserAccountHome({ setUser, user }) {
+function UserOrders({ setUser, user, setOrders, orders }) {
+  // function ordersFetch() {
+  //   fetch('/orders')
+  //     .then(response => response.json())
+  //     .then(data => setOrders(data));
+  // }
+
+  // useEffect(ordersFetch, []);
+
   return (
     <div>
       <Grid>
@@ -45,17 +53,37 @@ function UserAccountHome({ setUser, user }) {
             </Menu>
           </Grid.Column>
 
-          <Grid.Column width={10}>
-            <Header as="h1">Hi, {user.first_name}!</Header>
-            <Header as="h3">Welcome back.</Header>
-            <Header as={Link} to="/newArrivals">
-              Check out what's new
-            </Header>
+          <Grid.Column width={1}></Grid.Column>
+
+          <Grid.Column width={9}>
+            {orders?.map(order => {
+              return (
+                <div>
+                  <Card.Group>
+                    <Card fluid color="green" key={order.id}>
+                      <Card.Content header>Order #{order.id}</Card.Content>
+                      <Card.Content>
+                        <Card.Meta>Name: {order.name}</Card.Meta>
+                        <Card.Meta>Shipping Address: {order.address}</Card.Meta>
+                        <Card.Meta>
+                          Amount: ${parseFloat(order.amount).toFixed(2)}
+                        </Card.Meta>
+                      </Card.Content>
+                      <Card.Content extra>
+                        Amount: ${parseFloat(order.amount).toFixed(2)}
+                      </Card.Content>
+                    </Card>
+                  </Card.Group>
+                </div>
+              );
+            })}
           </Grid.Column>
+
+          <Grid.Column width={2}></Grid.Column>
         </Grid.Row>
       </Grid>
     </div>
   );
 }
 
-export default UserAccountHome;
+export default UserOrders;

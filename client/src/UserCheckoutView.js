@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Header,
   Grid,
@@ -11,17 +12,47 @@ import {
   Segment,
 } from 'semantic-ui-react';
 
-function UserCheckoutView({ cartProducts, onAddProduct, onRemoveProduct }) {
+function UserCheckoutView({
+  cartProducts,
+  onAddProduct,
+  onRemoveProduct,
+  totalItems,
+  user,
+  setCartProducts,
+  setOrders,
+}) {
   const productsPrice = cartProducts.reduce((a, c) => a + c.qty * c.price, 0);
   const [formState, setFormState] = useState({});
   const [errors, setErrors] = useState(null);
-  //   const [orders, setOrders] = useState({});
+
+  const taxPrice = (productsPrice * 0.1025).toFixed(2);
+
+  let navigate = useNavigate();
+
+  function shippingPrice() {
+    if (productsPrice > 99) {
+      return 0;
+    } else if (productsPrice < 99) {
+      return 7.89;
+    }
+  }
+
+  function freeShipping() {
+    if (shippingPrice() === 0) {
+      return <Header sub>FREE shipping</Header>;
+    } else {
+      return <div>${parseFloat(shippingPrice()).toFixed(2)}</div>;
+    }
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
     const newFormObj = {
       name,
       address,
+      user_id: user.id,
+      amount: productsPrice,
+      email: user.email,
     };
 
     fetch('/orders', {
@@ -32,7 +63,10 @@ function UserCheckoutView({ cartProducts, onAddProduct, onRemoveProduct }) {
       body: JSON.stringify(newFormObj),
     }).then(r => {
       if (r.ok) {
-        r.json().then(data => console.log(data));
+        r.json()
+          .then(data => setOrders(data))
+          // .then(setCartProducts([]))
+          .then(navigate('/cart/checkout/purchase'));
       } else {
         r.json().then(err => setErrors(err.errors));
       }
@@ -40,14 +74,6 @@ function UserCheckoutView({ cartProducts, onAddProduct, onRemoveProduct }) {
   }
 
   const { name, address } = formState;
-
-  function freeShipping() {
-    if (productsPrice > 99) {
-      return 0 && <div>FREE shipping</div>;
-    } else if (productsPrice < 99) {
-      return 7.89;
-    }
-  }
 
   function handleFormChange(e) {
     const { name, value } = e.target;
@@ -57,19 +83,18 @@ function UserCheckoutView({ cartProducts, onAddProduct, onRemoveProduct }) {
   return (
     <div>
       <Container>
-        <Segment.Group>
-          <Grid columns={2}>
-            <Header as="h2" textAlign="left">
-              Checkout
-            </Header>
-            <Grid.Row>
-              <Grid.Column width={10}>
+        <Segment>
+          <Grid>
+            <Grid.Row verticalAlign="top">
+              <Grid.Column width={11}>
                 <Segment padded secondary textAlign="left">
+                  <Header as="h2" textAlign="left">
+                    Checkout
+                  </Header>
                   <Header as="h4" textAlign="left">
                     My Information
                   </Header>
                   <Form onSubmit={handleSubmit} className="form">
-                    {/* <label htmlFor="name">Name: </label> */}
                     <Input
                       onChange={handleFormChange}
                       type="text"
@@ -78,7 +103,6 @@ function UserCheckoutView({ cartProducts, onAddProduct, onRemoveProduct }) {
                       name="name"
                     ></Input>
                     <Divider hidden></Divider>
-                    {/* <label htmlFor="address">Address: </label> */}
                     <Input
                       onChange={handleFormChange}
                       type="address"
@@ -87,46 +111,78 @@ function UserCheckoutView({ cartProducts, onAddProduct, onRemoveProduct }) {
                       name="address"
                     ></Input>
                     <Divider hidden />
-                    <Button secondary>Save</Button>
+
+                    <Button secondary type="submit">
+                      Purchase
+                    </Button>
                     <Divider hidden />
                   </Form>
 
                   <Header textAlign="left">View Order Details</Header>
                   <Header textAlign="left" as="h5">
-                    {cartProducts.length} items
+                    {totalItems} items
                   </Header>
                   <div>
                     {cartProducts.map(product => {
-                      return <Image size="small" src={product.image} />;
+                      return (
+                        <Image
+                          label={{ as: 'a', corner: 'left', icon: 'trash' }}
+                          size="small"
+                          src={product.image}
+                          onClick={() => onRemoveProduct(product)}
+                        />
+                      );
                     })}
                   </div>
                 </Segment>
               </Grid.Column>
-              <Grid.Column width={4} textAlign="left">
-                {cartProducts.length !== 0 && (
-                  <>
-                    <Header as="h2">Order Value</Header>
-                    <Header as="h4">
-                      ${parseFloat(productsPrice).toFixed(2)}
-                    </Header>
-                    <div>Shipping</div>
-                    <div>${freeShipping()}</div>
-                    <div>Tax : ${(productsPrice * 0.1025).toFixed(2)}</div>
-                    {/* <div>${(productsPrice * 0.1025).toFixed(2)}</div> */}
-                    <hr></hr>
-                    <strong>Total Price</strong>
-                    <div>
-                      $
-                      {(
-                        parseFloat(productsPrice) + parseFloat(freeShipping())
-                      ).toFixed(2)}
-                    </div>
-                  </>
-                )}
-              </Grid.Column>
+
+              <Grid.Column width={1}></Grid.Column>
+
+              <Segment padded vertical textAlign="left">
+                <Grid.Column width={4} textAlign="left">
+                  {cartProducts.length !== 0 && (
+                    <>
+                      <Header as="h2">Order Value</Header>
+                      <Divider hidden></Divider>
+                      <Divider hidden></Divider>
+
+                      <Header sub floated="left">
+                        Shipping
+                      </Header>
+                      <Header sub floated="right">
+                        {freeShipping()}
+                      </Header>
+                      <Divider hidden></Divider>
+                      <Divider hidden></Divider>
+
+                      <Header sub floated="left">
+                        EST Tax
+                      </Header>
+                      <Header sub floated="right">
+                        ${(productsPrice * 0.1025).toFixed(2)}
+                      </Header>
+                      <Divider hidden></Divider>
+                      <Divider hidden></Divider>
+                      <Divider></Divider>
+                      <Header sub floated="left">
+                        Total Price
+                      </Header>
+                      <Header sub floated="right">
+                        $
+                        {(
+                          parseFloat(taxPrice) +
+                          parseFloat(productsPrice) +
+                          parseFloat(shippingPrice())
+                        ).toFixed(2)}
+                      </Header>
+                    </>
+                  )}
+                </Grid.Column>
+              </Segment>
             </Grid.Row>
           </Grid>
-        </Segment.Group>
+        </Segment>
       </Container>
     </div>
   );

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Card, Image, Divider, Icon, Header } from 'semantic-ui-react';
 
-function UserCartProductDisplay({
+function UserCartPopup({
   cartProducts,
   onAddProduct,
   onRemoveProduct,
+  totalItems,
 }) {
   if (cartProducts.length === 0) {
     return (
@@ -18,26 +19,25 @@ function UserCartProductDisplay({
   } else {
     return (
       <div>
+        <Header>{totalItems} items in cart</Header>
         {cartProducts.map(product => {
           return (
             <Card key={product.id} fluid floated="left">
               <Card.Content textAlign="left">
-                <Image size="small" floated="left" src={product.image} />
+                <Image
+                  size="small"
+                  floated="left"
+                  label={{ as: 'a', corner: 'left', icon: 'trash' }}
+                  src={product.image}
+                  onClick={() => onRemoveProduct(product)}
+                />
                 <Divider hidden />
                 <Divider hidden />
                 <Divider hidden />
                 <Card.Header>{product.title}</Card.Header>
                 <Divider hidden />
                 <Card.Meta>qty: {product.qty}</Card.Meta>
-                <Icon name="plus" onClick={() => onAddProduct(product)} />
                 <Card.Meta>${parseFloat(product.price).toFixed(2)}</Card.Meta>
-                <div>
-                  <Icon
-                    size="small"
-                    name="trash"
-                    onClick={() => onRemoveProduct(product)}
-                  />
-                </div>
               </Card.Content>
             </Card>
           );
@@ -47,4 +47,4 @@ function UserCartProductDisplay({
   }
 }
 
-export default UserCartProductDisplay;
+export default UserCartPopup;

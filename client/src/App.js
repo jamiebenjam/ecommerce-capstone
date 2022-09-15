@@ -15,6 +15,9 @@ import UserAccountHome from './UserAccountHome';
 import UserSignIn from './UserSignIn';
 import UserProfileAccount from './UserProfileAccount';
 import UserCheckout from './UserCheckout';
+import UserOrders from './UserOrders';
+import UserPurchaseSuccess from './UserPurchaseSuccess';
+import AdminOrderView from './AdminOrderView';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -23,6 +26,7 @@ function App() {
   const [search, setSearch] = useState('');
   const [selectedSort, setSelectedSort] = useState('default');
   const [user, setUser] = useState({});
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     fetch('/me').then(r => {
@@ -39,6 +43,14 @@ function App() {
   }
 
   useEffect(fetchProducts, []);
+
+  function ordersFetch() {
+    fetch('/orders')
+      .then(response => response.json())
+      .then(data => setOrders(data));
+  }
+
+  useEffect(ordersFetch, []);
 
   function handleCategoryChange(category) {
     setSelectedCategory(category);
@@ -81,7 +93,12 @@ function App() {
   const productsMap = displayedProducts.map(product => {
     return (
       <Card key={product.id} as={Link} to={`/products/${product.id}`}>
-        <Image src={product.image} wrapped ui={false} />
+        <Image
+          style={{ borderRadius: 0 }}
+          src={product.image}
+          wrapped
+          ui={false}
+        />
         <Card.Content>
           <Card.Header>{product.title}</Card.Header>
           <Card.Meta>${parseFloat(product.price).toFixed(2)}</Card.Meta>
@@ -121,6 +138,12 @@ function App() {
     }
   };
 
+  const totalItems = cartProducts
+    .map(product => product.qty)
+    .reduce((a, c) => {
+      return a + c;
+    }, 0);
+
   useEffect(() => {
     setCartProducts(
       localStorage.getItem('cartProducts')
@@ -145,6 +168,7 @@ function App() {
         onRemoveProduct={onRemoveProduct}
         user={user}
         setUser={setUser}
+        totalItems={totalItems}
       />
       <Routes>
         <Route path="/" element={<UserLandingView />} />
@@ -177,6 +201,10 @@ function App() {
           }
         />
         <Route path="/admin" element={<AdminLanding />} />
+        <Route
+          path="/admin/orders"
+          element={<AdminOrderView orders={orders} />}
+        />
         <Route
           path="/products/:id"
           element={
@@ -216,8 +244,26 @@ function App() {
               setUser={setUser}
               onAddProduct={onAddProduct}
               onRemoveProduct={onRemoveProduct}
+              totalItems={totalItems}
+              setCartProducts={setCartProducts}
+              setOrders={setOrders}
             />
           }
+        />
+        <Route
+          path="/profile/orders"
+          element={
+            <UserOrders
+              setUser={setUser}
+              user={user}
+              setOrders={setOrders}
+              orders={orders}
+            />
+          }
+        />
+        <Route
+          path="/cart/checkout/purchase"
+          element={<UserPurchaseSuccess />}
         />
       </Routes>
     </div>
