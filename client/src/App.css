@@ -1,3 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: rgb(242, 244, 247);
+}
+
+.landing-img{
+  background-image: url("1-13.jpg");
+  height: 85%;
+  width: 100%;
+  padding-top: 10%;
+  padding-bottom: 8%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.header-img{
+  padding-top: 8%;
+  height: 50em;
+  width: 30em;
+}
+
+.header2-img{
+  padding-right: 5%;
+}
+
 .user_header {
   padding-top: 1%;
   padding-bottom: 1%;

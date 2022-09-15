@@ -83,7 +83,13 @@ function UserCart({ cartProducts, onAddProduct, onRemoveProduct }) {
               <Divider hidden></Divider>
               <Divider hidden></Divider>
               <Divider hidden></Divider>
-              <Button as={Link} to="/cart/checkout" size="large">
+              <Button
+                as={Link}
+                to="/cart/checkout"
+                size="large"
+                secondary
+                style={{ borderRadius: 0 }}
+              >
                 Continue to checkout
               </Button>
             </Grid.Column>

@@ -80,7 +80,9 @@ function UserCreateAccountModal({ handleFormChange, handleSubmit }) {
               <Form.Field>
                 <Checkbox label="I agree to the Terms and Conditions" />
               </Form.Field>
-              <Button type="submit">Submit</Button>
+              <Button type="submit" secondary style={{ borderRadius: 0 }}>
+                Submit
+              </Button>
             </Form>
           </Modal.Content>
         </Modal>

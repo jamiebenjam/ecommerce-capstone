@@ -32,6 +32,8 @@ function UserSignIn({ setUser }) {
 
   const { email, password } = formState;
 
+  console.log(formState);
+
   function handleFormChange(e) {
     const { name, value } = e.target;
     setFormState(prevState => ({ ...prevState, [name]: value }));

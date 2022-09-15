@@ -13,7 +13,7 @@ function UserSignInModal({ handleSubmit, handleFormChange, errors }) {
         onOpen={() => setOpen(true)}
         open={open}
         trigger={
-          <Button secondary fluid>
+          <Button secondary fluid style={{ borderRadius: 0 }}>
             Sign In
           </Button>
         }
@@ -39,7 +39,9 @@ function UserSignInModal({ handleSubmit, handleFormChange, errors }) {
               name="password"
             ></input>
             <Divider hidden />
-            <Button type="submit">Sign in</Button>
+            <Button type="submit" secondary style={{ borderRadius: 0 }}>
+              Sign in
+            </Button>
           </Form>
           <Header as="h5">{errors ? <span>{errors}</span> : null}</Header>
         </Modal.Content>

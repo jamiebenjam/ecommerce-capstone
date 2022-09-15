@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import AdminLanding from './AdminLanding';
 import { Routes, Route, Link } from 'react-router-dom';
-import UserLandingView from './UserLandingView';
 import UserShopAll from './UserShopAll';
 import UserNewArrivals from './UserNewArrivals';
 import UserProductItem from './UserProductItem';
@@ -18,6 +17,7 @@ import UserCheckout from './UserCheckout';
 import UserOrders from './UserOrders';
 import UserPurchaseSuccess from './UserPurchaseSuccess';
 import AdminOrderView from './AdminOrderView';
+import UserLandingLayout from './UserLandingLayout';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -171,7 +171,7 @@ function App() {
         totalItems={totalItems}
       />
       <Routes>
-        <Route path="/" element={<UserLandingView />} />
+        <Route path="/" element={<UserLandingLayout products={products} />} />
         <Route
           path="/products"
           element={

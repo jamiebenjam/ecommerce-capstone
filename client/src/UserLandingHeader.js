@@ -50,7 +50,7 @@ function UserLandingHeader({
           />
         </Grid.Column>
 
-        <Grid.Column width={10}>
+        <Grid.Column width={8}>
           <Header as={Link} to="/" size="huge">
             RAAS
           </Header>
@@ -71,7 +71,7 @@ function UserLandingHeader({
         </Grid.Column>
 
         <Grid.Column width={1} as={Link} to="/cart">
-          <Icon name="heart" />
+          <Icon color="black" name="heart" />
         </Grid.Column>
 
         <Grid.Column width={1}>
@@ -81,7 +81,7 @@ function UserLandingHeader({
         <Grid.Column width={1} as={Link} to="/cart">
           <span>({totalItems})</span>
           <Popup
-            trigger={<Icon name="cart" />}
+            trigger={<Icon color="black" name="shopping bag" />}
             flowing
             hoverable
             size="mini"
