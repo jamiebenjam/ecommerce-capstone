@@ -5,14 +5,9 @@ import UserLogOut from './UserLogOut';
 import landing from './komal.jpg';
 
 function UserOrders({ setUser, user, setOrders, orders }) {
-  // function ordersFetch() {
-  //   fetch('/orders')
-  //     .then(response => response.json())
-  //     .then(data => setOrders(data));
-  // }
-
-  // useEffect(ordersFetch, []);
-
+  console.log(user.id);
+  console.log(orders.filter(order => order.user.id === user.id));
+  const userOrderFilter = orders.filter(order => order.user.id === user.id);
   return (
     <div>
       <Grid>
@@ -57,7 +52,7 @@ function UserOrders({ setUser, user, setOrders, orders }) {
           <Grid.Column width={1}></Grid.Column>
 
           <Grid.Column width={9}>
-            {orders?.map(order => {
+            {userOrderFilter?.map(order => {
               return (
                 <div>
                   <Card.Group>
