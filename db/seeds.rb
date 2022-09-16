@@ -584,6 +584,16 @@ p50 = Product.create(
     isActive: true
 )
 
+#Jewelry
+p51 = Product.create(
+    title: 'JW1351', 
+    description: 'Handcrafted black and pink terracotta hand-painted necklace set ', 
+    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/image_e1ed7b96-6ff8-4222-b7c0-dfb98669000a_900x.jpg?v=1662086005",
+    price: 15,
+    color: 'Multi',
+    isActive: true
+)
+
 
 
 
@@ -643,6 +653,8 @@ pc47 = ProductCategory.create(product_id: p47.id, category_id: c5.id)
 pc48 = ProductCategory.create(product_id: p48.id, category_id: c5.id)
 pc49 = ProductCategory.create(product_id: p49.id, category_id: c5.id)
 pc50 = ProductCategory.create(product_id: p50.id, category_id: c5.id)
+
+pc51 = ProductCategory.create(product_id: p51.id, category_id: c9.id)
 
 #Sizes
 s1 = Size.create(name: "32")

@@ -59,7 +59,12 @@ function UserLoggedInHeader({ user, setUser }) {
           <Dropdown.Menu direction="left">
             <Dropdown.Item>Welcome back, {user.first_name}!</Dropdown.Item>
             <Dropdown.Item>
-              <Button as={Link} to="/profile" style={{ borderRadius: 0 }}>
+              <Button
+                secondary
+                as={Link}
+                to="/profile"
+                style={{ borderRadius: 0 }}
+              >
                 Profile
               </Button>
               <Divider></Divider>
@@ -79,7 +84,7 @@ function UserLoggedInHeader({ user, setUser }) {
               <UserSignIn setUser={setUser} />
             </Dropdown.Item>
             <Dropdown.Item>
-              <UserCreateAccount />
+              <UserCreateAccount setUser={setUser} />
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

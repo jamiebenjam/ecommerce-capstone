@@ -5,8 +5,6 @@ import UserCreateAccountModal from './UserCreateAccountModal';
 function UserCreateAccount({ setUser }) {
   const [formState, setFormState] = useState({});
 
-  console.log(setUser);
-
   let navigate = useNavigate();
 
   function handleSubmit(e) {
