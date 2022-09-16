@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Image, Container } from 'semantic-ui-react';
 import UserShopHeader from './UserShopHeader';
 
 function UserNewArrivals() {
@@ -52,7 +52,9 @@ function UserNewArrivals() {
         selectedCategory={selectedCategory}
         handleCategoryChange={handleCategoryChange}
       />
-      <Card.Group itemsPerRow={4}>{productsMap}</Card.Group>
+      <Container>
+        <Card.Group itemsPerRow={4}>{productsMap}</Card.Group>
+      </Container>
     </div>
   );
 }

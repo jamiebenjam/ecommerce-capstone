@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Container } from 'semantic-ui-react';
 import UserShopHeader from './UserShopHeader';
 
 function UserShopAll({
@@ -17,7 +17,9 @@ function UserShopAll({
         setSelectedSort={setSelectedSort}
         selectedSort={selectedSort}
       />
-      <Card.Group itemsPerRow={4}>{productsMap}</Card.Group>
+      <Container>
+        <Card.Group itemsPerRow={4}>{productsMap}</Card.Group>
+      </Container>
     </div>
   );
 }

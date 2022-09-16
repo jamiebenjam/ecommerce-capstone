@@ -10,6 +10,7 @@ import {
   Menu,
   Button,
   Divider,
+  Statistic,
 } from 'semantic-ui-react';
 import landing from './6.jpeg';
 import fav1 from './e1.jpeg';
@@ -20,13 +21,14 @@ import header from './12.jpeg';
 import './App.css';
 import { Link } from 'react-router-dom';
 import header2 from './13.jpeg';
+import nyfw from './nyfw.jpg';
 
 function UserLandingLayout({ products }) {
   return (
     <div>
       <Grid>
         <Grid.Row>
-          <Grid.Column className="landing-img" width={16}>
+          <Grid.Column className="landing-img" largeScreen={16}>
             <Divider hidden></Divider>
             <Divider hidden></Divider>
             <Divider hidden></Divider>
@@ -36,9 +38,11 @@ function UserLandingLayout({ products }) {
             <Divider hidden></Divider>
             <Divider hidden></Divider>
 
-            <Header inverted as="h1">
-              The Velvet Edit
-            </Header>
+            <Statistic inverted size="small">
+              <Statistic.Label>The</Statistic.Label>
+              <Statistic.Value>Velvet Edit</Statistic.Value>
+            </Statistic>
+
             <Header inverted sub>
               Classic silhouettes meet soft elegance
             </Header>
@@ -52,24 +56,34 @@ function UserLandingLayout({ products }) {
 
         <Grid.Row columns={2}>
           <Grid.Column>
-            <Header>Fall Winter 2022</Header>
+            <Statistic size="mini">
+              {/* <Statistic.Label>FALL WINTER 2022</Statistic.Label> */}
+              <Statistic.Value>FALL WINTER 2022</Statistic.Value>
+            </Statistic>
+            <Divider hidden></Divider>
+            {/* <Header className="header">Fall Winter 2022</Header> */}
             <img className="header-img" src={header} alt="header_1" />
-            <Header sub>Introducing the green lehenga choli</Header>
+            <Header as="h4">Introducing the green lehenga choli</Header>
+            <Button basic color="black" style={{ borderRadius: 0 }}>
+              Shop Now
+            </Button>
           </Grid.Column>
           <Grid.Column>
             <img className="header2-img" src={header2} alt="header_2" />
           </Grid.Column>
         </Grid.Row>
 
-        <Divider hidden></Divider>
+        <div className="spacer"></div>
 
         <Grid>
           <Grid.Row centered>
-            <Header as="h1">Our Favorites</Header>
+            <Statistic>
+              <Statistic.Label>The</Statistic.Label>
+              <Statistic.Value>Beach Edit</Statistic.Value>
+            </Statistic>
           </Grid.Row>
 
           <Grid.Row centered href="http://localhost:4000/products/2">
-            <div>{products[0]?.title}</div>
             <Grid.Column width={4}>
               <Image src={fav1} />
             </Grid.Column>
@@ -86,25 +100,28 @@ function UserLandingLayout({ products }) {
 
         <Grid.Row centered as={Link} to="/products">
           <Button size="large" inverted secondary style={{ borderRadius: 0 }}>
-            VIEW ALL PRODUCTS
+            SHOP THE COLLECTION
           </Button>
         </Grid.Row>
 
+        <Divider hidden></Divider>
+
         <Grid.Row>
           <Grid.Column width={6} stretched textAlign="left">
-            <Segment padded="very">
-              <Header>New York Fashion Week</Header>
+            <Segment style={{ padding: '10em 10em' }}>
+              <Header as="h1">New York Fashion Week</Header>
               <div>
-                Take a trip down memory lane wiht our Fiorire collection on hand
+                Take a trip down memory lane with our Fiorire collection on hand
                 embroidered pieces representing pure luxury.
               </div>
+              <Divider hidden></Divider>
               <Button secondary style={{ borderRadius: 0 }}>
                 Explore the Runway
               </Button>
             </Segment>
           </Grid.Column>
           <Grid.Column width={10}>
-            <Image src={landing2} />
+            <img className="nyfw" src={nyfw} alt="nyfw" />
           </Grid.Column>
         </Grid.Row>
       </Grid>

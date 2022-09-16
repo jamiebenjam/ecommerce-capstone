@@ -68,13 +68,13 @@ function App() {
   };
 
   const sortProducts = () => {
-    if (selectedSort === 'low') {
+    if (selectedSort === 'high') {
       return filterProducts().sort(function (a, b) {
-        return b.id - a.id;
+        return b.price - a.price;
       });
-    } else if (selectedSort === 'high') {
+    } else if (selectedSort === 'low') {
       return filterProducts().sort(function (a, b) {
-        return a.id - b.id;
+        return a.price - b.price;
       });
     } else {
       return filterProducts();

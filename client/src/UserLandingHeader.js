@@ -37,7 +37,7 @@ function UserLandingHeader({
   return (
     <div className="user_header">
       <Grid>
-        <Grid.Column floated="left" width={1}>
+        <Grid.Column floated="left" width={2}>
           <UserHeaderDropdown
             filterProducts={filterProducts}
             displayedProducts={displayedProducts}

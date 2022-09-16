@@ -5,6 +5,10 @@ body {
   background-color: rgb(242, 244, 247);
 }
 
+.spacer {
+  padding-top: 5%;
+}
+
 .landing-img{
   background-image: url("1-13.jpg");
   height: 85%;
@@ -13,16 +17,21 @@ body {
   padding-bottom: 8%;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
+}
+
+header {
+ text-align:center;
 }
 
 .header-img{
-  padding-top: 8%;
-  height: 50em;
+  /* padding-top: 8%; */
+  height: 45em;
   width: 30em;
 }
 
 .header2-img{
-  padding-right: 5%;
+  padding-right: 8%;
 }
 
 .user_header {
