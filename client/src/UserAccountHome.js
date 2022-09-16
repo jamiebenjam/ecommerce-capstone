@@ -2,6 +2,7 @@ import React from 'react';
 import { Header, Menu, Grid, Image, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import UserLogOut from './UserLogOut';
+import landing from './16.jpg';
 
 function UserAccountHome({ setUser, user }) {
   return (
@@ -9,11 +10,11 @@ function UserAccountHome({ setUser, user }) {
       <Grid>
         <Grid.Row>
           <Divider hidden></Divider>
-          <Image
-            fluid
-            centered
-            src="https://scontent-ort2-1.xx.fbcdn.net/v/t1.6435-9/123918643_3303742496390317_6307368711531021789_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=e3f864&_nc_ohc=HOxZzi0MTBYAX8M-5U0&_nc_oc=AQkVHdqWSEGL3zBCspgBO9tGvwkPkjT6vbzhI-U-4W9CQ-3xTUHFb5hx05rNbwKd0NPFpp7g-TKa2Ng74vf36qPl&_nc_ht=scontent-ort2-1.xx&oh=00_AT-KCwjPJyEP1Zy4j9uCi3fwM491WWzcVrI_BWKidFtf1Q&oe=63451494"
-          ></Image>
+          <img
+            src={landing}
+            alt="profile-landing"
+            className="profile-landing"
+          />
         </Grid.Row>
         <Grid.Row>
           <Grid.Column width={1}></Grid.Column>

@@ -28,6 +28,8 @@ function App() {
   const [user, setUser] = useState({});
   const [orders, setOrders] = useState([]);
 
+  console.log(user);
+
   useEffect(() => {
     fetch('/me').then(r => {
       if (r.ok) {

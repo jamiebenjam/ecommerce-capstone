@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Checkbox, Form, Menu, Modal } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Menu, Modal, Header } from 'semantic-ui-react';
 
-function UserCreateAccountModal({ handleFormChange, handleSubmit }) {
+function UserCreateAccountModal({ handleFormChange, handleSubmit, errors }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ function UserCreateAccountModal({ handleFormChange, handleSubmit }) {
           <Modal.Header>Create an account</Modal.Header>
           <Modal.Content>
             <Form onSubmit={handleSubmit}>
-              <Form.Field>
+              <Form.Field required>
                 <label>First Name</label>
                 <input
                   onChange={handleFormChange}
@@ -27,7 +27,7 @@ function UserCreateAccountModal({ handleFormChange, handleSubmit }) {
                   placeholder="First Name"
                 />
               </Form.Field>
-              <Form.Field>
+              <Form.Field required>
                 <label>Last Name</label>
                 <input
                   onChange={handleFormChange}
@@ -37,7 +37,7 @@ function UserCreateAccountModal({ handleFormChange, handleSubmit }) {
                   placeholder="Last Name"
                 />
               </Form.Field>
-              <Form.Field>
+              <Form.Field required>
                 <label>Email</label>
                 <input
                   onChange={handleFormChange}
@@ -47,7 +47,7 @@ function UserCreateAccountModal({ handleFormChange, handleSubmit }) {
                   placeholder="Email"
                 />
               </Form.Field>
-              <Form.Field>
+              <Form.Field required>
                 <label>Address</label>
                 <input
                   onChange={handleFormChange}
@@ -57,7 +57,22 @@ function UserCreateAccountModal({ handleFormChange, handleSubmit }) {
                   placeholder="Address"
                 />
               </Form.Field>
-              <Form.Field>
+
+              <div>
+                <br></br>
+                <p className="password">
+                  Please choose a password with at least
+                </p>
+                <ul className="password_list">
+                  <li>8 characters</li>
+                  <li>1 capitalized letter</li>
+                  <li>1 number</li>
+                </ul>
+              </div>
+
+              <br></br>
+
+              <Form.Field required>
                 <label>Password</label>
                 <input
                   onChange={handleFormChange}
@@ -67,7 +82,7 @@ function UserCreateAccountModal({ handleFormChange, handleSubmit }) {
                   placeholder="Password"
                 />
               </Form.Field>
-              <Form.Field>
+              <Form.Field required>
                 <label>Password Confirmation</label>
                 <input
                   onChange={handleFormChange}
@@ -77,13 +92,14 @@ function UserCreateAccountModal({ handleFormChange, handleSubmit }) {
                   placeholder="Confirm Password"
                 />
               </Form.Field>
-              <Form.Field>
+              <Form.Field required>
                 <Checkbox label="I agree to the Terms and Conditions" />
               </Form.Field>
               <Button type="submit" secondary style={{ borderRadius: 0 }}>
                 Submit
               </Button>
             </Form>
+            <Header as="h5">{errors ? <span>{errors}</span> : null}</Header>
           </Modal.Content>
         </Modal>
       </div>
