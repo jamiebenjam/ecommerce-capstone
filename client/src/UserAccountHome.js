@@ -2,14 +2,14 @@ import React from 'react';
 import { Header, Menu, Grid, Image, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import UserLogOut from './UserLogOut';
-import landing from './16.jpg';
+import landing from './komal.jpg';
 
 function UserAccountHome({ setUser, user }) {
   return (
     <div>
       <Grid>
         <Grid.Row>
-          <Divider hidden></Divider>
+          {/* <Divider hidden></Divider> */}
           <img
             src={landing}
             alt="profile-landing"
@@ -50,7 +50,7 @@ function UserAccountHome({ setUser, user }) {
             <Header as="h1">Hi, {user.first_name}!</Header>
             <Header as="h3">Welcome back.</Header>
             <Header as={Link} to="/newArrivals">
-              Check out what's new
+              Check out what's new!
             </Header>
           </Grid.Column>
         </Grid.Row>

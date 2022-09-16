@@ -11,7 +11,7 @@ import {
   Header,
 } from 'semantic-ui-react';
 import { useNavigate, Link } from 'react-router-dom';
-import landing from './16.jpg';
+import landing from './komal.jpg';
 
 function UserProfileAccount({ user, setUser }) {
   const [formState, setFormState] = useState({

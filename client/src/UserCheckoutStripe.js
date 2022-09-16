@@ -1,15 +1,37 @@
 import React from 'react';
 import StripeCard from './StripeCard';
-import UserCheckoutView from './UserCheckoutView';
-import { Container, Segment } from 'semantic-ui-react';
+import {
+  Container,
+  Grid,
+  Header,
+  Card,
+  Icon,
+  Divider,
+} from 'semantic-ui-react';
+import landing from './union.jpg';
 
-const UserCheckoutStripe = () => {
+const UserCheckoutStripe = ({ orders }) => {
   return (
     <div>
+      <img src={landing} alt="payment-landing" className="payment-landing" />
+      <Divider hidden></Divider>
       <Container>
-        <Segment>
-          <StripeCard />
-        </Segment>
+        <Card raised fluid color="violet">
+          <Card.Content>
+            <Grid centered>
+              <Grid.Column width={6}>
+                <Divider hidden></Divider>
+                <Header as="h1">
+                  <Icon name="credit card" />
+                  <Header.Content>Payment Method</Header.Content>
+                </Header>
+                <Divider></Divider>
+                <StripeCard orders={orders} />
+                <Divider hidden></Divider>
+              </Grid.Column>
+            </Grid>
+          </Card.Content>
+        </Card>
       </Container>
     </div>
   );

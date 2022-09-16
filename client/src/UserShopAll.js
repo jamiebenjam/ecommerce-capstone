@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Container } from 'semantic-ui-react';
+import LandingFooter from './LandingFooter';
 import UserShopHeader from './UserShopHeader';
 
 function UserShopAll({
@@ -20,6 +21,7 @@ function UserShopAll({
       <Container>
         <Card.Group itemsPerRow={4}>{productsMap}</Card.Group>
       </Container>
+      <LandingFooter />
     </div>
   );
 }

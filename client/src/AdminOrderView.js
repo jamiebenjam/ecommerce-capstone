@@ -1,7 +1,7 @@
 import { Table, Container, Divider } from 'semantic-ui-react';
 
 function AdminOrderView({ orders }) {
-  const ordersMap = orders.map(order => {
+  const ordersMap = orders?.map(order => {
     return (
       <Table.Row key={order.id}>
         <Table.Cell>{order.name}</Table.Cell>

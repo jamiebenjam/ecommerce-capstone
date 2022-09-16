@@ -22,6 +22,7 @@ import './App.css';
 import { Link } from 'react-router-dom';
 import header2 from './13.jpeg';
 import nyfw from './nyfw.jpg';
+import LandingFooter from './LandingFooter';
 
 function UserLandingLayout({ products }) {
   return (
@@ -126,7 +127,7 @@ function UserLandingLayout({ products }) {
         </Grid.Row>
       </Grid>
 
-      <Segment inverted vertical style={{ padding: '5em 0em' }}>
+      {/* <Segment inverted vertical style={{ padding: '5em 0em' }}>
         <Container>
           <Grid divided inverted stackable textAlign="left">
             <Grid.Row>
@@ -179,7 +180,8 @@ function UserLandingLayout({ products }) {
             </Grid.Row>
           </Grid>
         </Container>
-      </Segment>
+      </Segment> */}
+      <LandingFooter />
     </div>
   );
 }

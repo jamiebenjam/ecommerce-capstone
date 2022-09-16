@@ -27,6 +27,11 @@ function UserCheckoutView({
   const [errors, setErrors] = useState(null);
 
   const taxPrice = (productsPrice * 0.1025).toFixed(2);
+  const totalPrice = (
+    parseFloat(taxPrice) +
+    parseFloat(productsPrice) +
+    parseFloat(shippingPrice())
+  ).toFixed(2);
 
   let navigate = useNavigate();
 
@@ -52,9 +57,11 @@ function UserCheckoutView({
       name,
       address,
       user_id: user.id,
-      amount: productsPrice,
+      amount: totalPrice,
       email: user.email,
     };
+
+    console.log(totalPrice);
 
     fetch('/orders', {
       method: 'POST',
@@ -66,7 +73,7 @@ function UserCheckoutView({
       if (r.ok) {
         r.json()
           .then(data => setOrders(data))
-          // .then(setCartProducts([]))
+          .then(setCartProducts([]))
           .then(navigate('/cart/checkout/payment'));
       } else {
         r.json().then(err => setErrors(err.errors));
@@ -170,19 +177,13 @@ function UserCheckoutView({
                         Total Price
                       </Header>
                       <Header sub floated="right">
-                        $
-                        {(
-                          parseFloat(taxPrice) +
-                          parseFloat(productsPrice) +
-                          parseFloat(shippingPrice())
-                        ).toFixed(2)}
+                        ${totalPrice}
                       </Header>
                     </>
                   )}
                 </Grid.Column>
               </Segment>
             </Grid.Row>
-            {/* <StripeCard /> */}
           </Grid>
         </Segment>
       </Container>

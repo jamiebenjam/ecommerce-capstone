@@ -18,6 +18,7 @@ import UserPurchaseSuccess from './UserPurchaseSuccess';
 import AdminOrderView from './AdminOrderView';
 import UserLandingLayout from './UserLandingLayout';
 import UserCheckoutStripe from './UserCheckoutStripe';
+import LandingFooter from './LandingFooter';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -47,7 +48,9 @@ function App() {
   function ordersFetch() {
     fetch('/orders')
       .then(response => response.json())
-      .then(data => setOrders(data));
+      .then(data =>
+        setOrders(data.sort((a, b) => (a.created_at - b.created_at ? 1 : -1)))
+      );
   }
 
   useEffect(ordersFetch, []);
@@ -250,7 +253,10 @@ function App() {
             />
           }
         />
-        <Route path="/cart/checkout/payment" element={<UserCheckoutStripe />} />
+        <Route
+          path="/cart/checkout/payment"
+          element={<UserCheckoutStripe orders={orders} />}
+        />
         <Route
           path="/profile/orders"
           element={

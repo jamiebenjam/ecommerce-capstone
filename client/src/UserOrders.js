@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, Menu, Grid, Image, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import UserLogOut from './UserLogOut';
-import landing from './16.jpg';
+import landing from './komal.jpg';
 
 function UserOrders({ setUser, user, setOrders, orders }) {
   // function ordersFetch() {

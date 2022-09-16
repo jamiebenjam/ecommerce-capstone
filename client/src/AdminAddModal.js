@@ -22,11 +22,6 @@ function AdminAddModal({ onAddProduct }) {
         <Modal.Content>
           <AdminAddProduct onAddProduct={onAddProduct} />
         </Modal.Content>
-        <Modal.Actions>
-          <Button color="green" onClick={() => setOpen(false)}>
-            <Icon name="add" /> Add
-          </Button>
-        </Modal.Actions>
       </Modal>
     </div>
   );

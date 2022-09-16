@@ -1,4 +1,4 @@
-import { Form, Container, Button } from 'semantic-ui-react';
+import { Form, Container, Button, Icon } from 'semantic-ui-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -96,7 +96,10 @@ function AdminEditProduct({ product, editProduct }) {
 
           <br></br>
           <br></br>
-          <Button type="submit">Submit</Button>
+          <Button color="green" type="submit">
+            <Icon name="add" />
+            Update Changes
+          </Button>
           <br></br>
         </Form>
       </Container>

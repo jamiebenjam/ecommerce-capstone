@@ -8,12 +8,14 @@ function AdminProductView() {
   const [productID, setProductID] = useState(false);
   const [isActive, setIsActive] = useState(true);
 
-  console.log(isActive);
+  // console.log(isActive);
 
   function fetchProducts() {
     fetch('/products')
       .then(response => response.json())
-      .then(data => setProducts(data));
+      .then(data =>
+        setProducts(data.sort((a, b) => (a.created_at - b.created_at ? 1 : -1)))
+      );
   }
 
   useEffect(fetchProducts, []);

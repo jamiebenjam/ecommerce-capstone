@@ -5,14 +5,23 @@ body {
   background-color: rgb(242, 244, 247);
 }
 
-.profile-landing {
-  height: 80%;
-  padding-left: 20%;
+
+.purchase-landing {
+  height: 40%;
+  width: 100%;
+  padding-bottom: 2%;
 }
 
-.nyfw {
-  /* height: 100%; */
+.payment-landing {
+  height: 50%;
+  width: 100%;
 }
+
+.profile-landing {
+  height: 100%;
+  width: 100%;
+}
+
 
 .spacer {
   padding-top: 5%;
