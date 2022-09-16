@@ -7,7 +7,6 @@ import UserNewArrivals from './UserNewArrivals';
 import UserProductItem from './UserProductItem';
 import { Card, Image } from 'semantic-ui-react';
 import UserCart from './UserCart';
-// import StripeCard from './StripeCard';
 import UserLandingHeader from './UserLandingHeader';
 import UserCreateAccount from './UserCreateAccount';
 import UserAccountHome from './UserAccountHome';
@@ -18,6 +17,7 @@ import UserOrders from './UserOrders';
 import UserPurchaseSuccess from './UserPurchaseSuccess';
 import AdminOrderView from './AdminOrderView';
 import UserLandingLayout from './UserLandingLayout';
+import UserCheckoutStripe from './UserCheckoutStripe';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -250,6 +250,7 @@ function App() {
             />
           }
         />
+        <Route path="/cart/checkout/payment" element={<UserCheckoutStripe />} />
         <Route
           path="/profile/orders"
           element={
@@ -263,7 +264,7 @@ function App() {
         />
         <Route
           path="/cart/checkout/purchase"
-          element={<UserPurchaseSuccess />}
+          element={<UserPurchaseSuccess orders={orders} />}
         />
       </Routes>
     </div>

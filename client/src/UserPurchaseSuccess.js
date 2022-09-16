@@ -12,8 +12,15 @@ import {
   Modal,
 } from 'semantic-ui-react';
 
-function UserPurchaseSuccess() {
-  return <div>thanks 4 buying</div>;
+function UserPurchaseSuccess({ orders }) {
+  return (
+    <div>
+      <Container>
+        <Header>Order Summary</Header>
+        {orders.map(order => order.id)}
+      </Container>
+    </div>
+  );
 }
 
 export default UserPurchaseSuccess;

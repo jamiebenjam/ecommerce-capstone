@@ -11,6 +11,7 @@ import {
   Image,
   Segment,
 } from 'semantic-ui-react';
+import StripeCard from './StripeCard';
 
 function UserCheckoutView({
   cartProducts,
@@ -21,7 +22,7 @@ function UserCheckoutView({
   setCartProducts,
   setOrders,
 }) {
-  const productsPrice = cartProducts.reduce((a, c) => a + c.qty * c.price, 0);
+  const productsPrice = cartProducts?.reduce((a, c) => a + c.qty * c.price, 0);
   const [formState, setFormState] = useState({});
   const [errors, setErrors] = useState(null);
 
@@ -66,7 +67,7 @@ function UserCheckoutView({
         r.json()
           .then(data => setOrders(data))
           // .then(setCartProducts([]))
-          .then(navigate('/cart/checkout/purchase'));
+          .then(navigate('/cart/checkout/payment'));
       } else {
         r.json().then(err => setErrors(err.errors));
       }
@@ -86,7 +87,7 @@ function UserCheckoutView({
         <Segment>
           <Grid>
             <Grid.Row verticalAlign="top">
-              <Grid.Column width={11}>
+              <Grid.Column width={10}>
                 <Segment padded secondary textAlign="left">
                   <Header as="h2" textAlign="left">
                     Checkout
@@ -113,7 +114,7 @@ function UserCheckoutView({
                     <Divider hidden />
 
                     <Button secondary type="submit">
-                      Purchase
+                      Continue to Payment
                     </Button>
                     <Divider hidden />
                   </Form>
@@ -123,7 +124,7 @@ function UserCheckoutView({
                     {totalItems} items
                   </Header>
                   <div>
-                    {cartProducts.map(product => {
+                    {cartProducts?.map(product => {
                       return (
                         <Image
                           label={{ as: 'a', corner: 'left', icon: 'trash' }}
@@ -140,8 +141,8 @@ function UserCheckoutView({
               <Grid.Column width={1}></Grid.Column>
 
               <Segment padded vertical textAlign="left">
-                <Grid.Column width={4} textAlign="left">
-                  {cartProducts.length !== 0 && (
+                <Grid.Column width={6} textAlign="left">
+                  {cartProducts?.length !== 0 && (
                     <>
                       <Header as="h2">Order Value</Header>
                       <Divider hidden></Divider>
@@ -181,6 +182,7 @@ function UserCheckoutView({
                 </Grid.Column>
               </Segment>
             </Grid.Row>
+            {/* <StripeCard /> */}
           </Grid>
         </Segment>
       </Container>

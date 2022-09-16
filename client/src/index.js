@@ -5,10 +5,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe('STRIPE_PUBLISHABLE_API_KEY');
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Elements stripe={stripePromise}>
+      <App />
+    </Elements>
   </BrowserRouter>,
   document.getElementById('root')
 );
