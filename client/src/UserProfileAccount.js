@@ -7,7 +7,6 @@ import {
   Grid,
   Divider,
   Menu,
-  Image,
   Header,
 } from 'semantic-ui-react';
 import { useNavigate, Link } from 'react-router-dom';

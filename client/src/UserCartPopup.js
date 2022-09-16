@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Divider, Icon, Header } from 'semantic-ui-react';
+import { Card, Image, Divider, Header } from 'semantic-ui-react';
 
 function UserCartPopup({
   cartProducts,

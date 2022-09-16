@@ -4,6 +4,8 @@ import checkout from './checkout.jpg';
 import { Link } from 'react-router-dom';
 
 function UserPurchaseSuccess({ orders }) {
+  console.log(orders[0]);
+  const recentOrder = orders[orders?.length - 1];
   return (
     <div>
       <img
@@ -15,19 +17,14 @@ function UserPurchaseSuccess({ orders }) {
         <Header>Thank you for your purchase!</Header>
         <Header>Order Summary</Header>
         <Card.Group>
-          <Card fluid color="green" key={orders[orders?.length - 1]?.id}>
-            <Card.Content header>
-              Order #{orders[orders?.length - 1]?.id}
-            </Card.Content>
+          <Card fluid color="green" key={recentOrder?.id}>
+            <Card.Content header>Order #{recentOrder?.id}</Card.Content>
             <Card.Content>
-              <Card.Meta>Name: {orders[orders?.length - 1]?.name}</Card.Meta>
-              <Card.Meta>
-                Shipping Address: {orders[orders?.length - 1]?.address}
-              </Card.Meta>
+              <Card.Meta>Name: {recentOrder?.name}</Card.Meta>
+              <Card.Meta>Shipping Address: {recentOrder?.address}</Card.Meta>
             </Card.Content>
             <Card.Content extra>
-              Amount: $
-              {parseFloat(orders[orders?.length - 1]?.amount).toFixed(2)}
+              Amount: ${parseFloat(recentOrder?.amount).toFixed(2)}
             </Card.Content>
           </Card>
         </Card.Group>

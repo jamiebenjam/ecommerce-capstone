@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Menu, Grid, Image, Divider } from 'semantic-ui-react';
+import { Header, Menu, Grid, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import UserLogOut from './UserLogOut';
 import landing from './komal.jpg';

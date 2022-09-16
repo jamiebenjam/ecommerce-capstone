@@ -3,20 +3,14 @@ import {
   Grid,
   Image,
   Segment,
-  Container,
-  List,
   Header,
-  Icon,
-  Menu,
   Button,
   Divider,
   Statistic,
 } from 'semantic-ui-react';
-import landing from './6.jpeg';
 import fav1 from './e1.jpeg';
 import fav2 from './e8.jpeg';
 import fav3 from './8.jpeg';
-import landing2 from './48.jpeg';
 import header from './12.jpeg';
 import './App.css';
 import { Link } from 'react-router-dom';
@@ -58,11 +52,9 @@ function UserLandingLayout({ products }) {
         <Grid.Row columns={2}>
           <Grid.Column>
             <Statistic size="mini">
-              {/* <Statistic.Label>FALL WINTER 2022</Statistic.Label> */}
               <Statistic.Value>FALL WINTER 2022</Statistic.Value>
             </Statistic>
             <Divider hidden></Divider>
-            {/* <Header className="header">Fall Winter 2022</Header> */}
             <img className="header-img" src={header} alt="header_1" />
             <Header as="h4">Introducing the green lehenga choli</Header>
             <Button basic color="black" style={{ borderRadius: 0 }}>

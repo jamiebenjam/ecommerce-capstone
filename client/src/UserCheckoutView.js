@@ -11,7 +11,6 @@ import {
   Image,
   Segment,
 } from 'semantic-ui-react';
-import StripeCard from './StripeCard';
 
 function UserCheckoutView({
   cartProducts,
@@ -165,7 +164,7 @@ function UserCheckoutView({
                       <Divider hidden></Divider>
 
                       <Header sub floated="left">
-                        EST Tax
+                        Tax
                       </Header>
                       <Header sub floated="right">
                         ${(productsPrice * 0.1025).toFixed(2)}

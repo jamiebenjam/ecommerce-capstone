@@ -7,7 +7,6 @@ function UserShopHeader({
   handleCategoryChange,
   setSelectedSort,
   selectedSort,
-  cartProducts,
 }) {
   return (
     <div>
