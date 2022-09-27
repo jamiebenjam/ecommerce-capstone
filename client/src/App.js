@@ -197,6 +197,10 @@ function App() {
             <UserNewArrivals
               handleCategoryChange={handleCategoryChange}
               selectedCategory={selectedCategory}
+              productsMap={productsMap}
+              setSelectedSort={setSelectedSort}
+              selectedSort={selectedSort}
+              displayedProducts={displayedProducts}
             />
           }
         />

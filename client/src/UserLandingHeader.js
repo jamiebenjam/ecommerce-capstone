@@ -50,7 +50,7 @@ function UserLandingHeader({
           />
         </Grid.Column>
 
-        <Grid.Column width={8}>
+        <Grid.Column width={10}>
           <Header as={Link} to="/" size="huge">
             RAAS
           </Header>
@@ -70,9 +70,9 @@ function UserLandingHeader({
           </Dropdown>
         </Grid.Column>
 
-        <Grid.Column width={1} as={Link} to="/cart">
+        {/* <Grid.Column width={1} as={Link} to="/cart">
           <Icon color="black" name="heart" />
-        </Grid.Column>
+        </Grid.Column> */}
 
         <Grid.Column width={1}>
           <UserLoggedInHeader user={user} setUser={setUser} />

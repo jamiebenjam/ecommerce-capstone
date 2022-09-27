@@ -5,9 +5,8 @@ import UserLogOut from './UserLogOut';
 import landing from './komal.jpg';
 
 function UserOrders({ setUser, user, setOrders, orders }) {
-  console.log(user.id);
-  console.log(orders.filter(order => order.user.id === user.id));
   const userOrderFilter = orders.filter(order => order.user.id === user.id);
+
   return (
     <div>
       <Grid>

@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Image, Container } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Card, Container, Image } from 'semantic-ui-react';
 import UserShopHeader from './UserShopHeader';
 
 function UserNewArrivals() {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedSort, setSelectedSort] = useState('default');
+  const [search, setSearch] = useState('');
 
-  function fetchNewArrivals() {
+  function fetchProducts() {
     fetch('/products')
       .then(response => response.json())
       .then(data =>
@@ -14,30 +17,55 @@ function UserNewArrivals() {
       );
   }
 
-  useEffect(fetchNewArrivals, []);
+  useEffect(fetchProducts, []);
 
   function handleCategoryChange(category) {
     setSelectedCategory(category);
   }
 
-  let selectedProducts = [];
+  const filterProducts = () => {
+    if (selectedCategory === 'All') {
+      return products;
+    }
+    return products.filter(product => {
+      return product.categories
+        .map(category => category.name)
+        .includes(selectedCategory);
+    });
+  };
 
-  products?.map(product =>
-    product.categories?.filter(category => {
-      if (selectedCategory === 'All') {
-        return category.name !== null && selectedProducts.push(product);
-      } else {
-        return (
-          category.name === selectedCategory && selectedProducts.push(product)
-        );
-      }
-    })
+  const sortProducts = () => {
+    if (selectedSort === 'high') {
+      return filterProducts().sort(function (a, b) {
+        return b.price - a.price;
+      });
+    } else if (selectedSort === 'low') {
+      return filterProducts().sort(function (a, b) {
+        return a.price - b.price;
+      });
+    } else {
+      return filterProducts();
+    }
+  };
+
+  const searchFilter = sortProducts().filter(
+    product =>
+      product.title.toLowerCase().includes(search.toLowerCase()) ||
+      product.color.toLowerCase().includes(search.toLowerCase()) ||
+      product.description.toLowerCase().includes(search.toLowerCase())
   );
 
-  const productsMap = selectedProducts?.map(product => {
+  const displayedProducts = searchFilter;
+
+  const productsMap = displayedProducts.map(product => {
     return (
-      <Card key={product.id}>
-        <Image src={product.image} wrapped ui={false} />
+      <Card key={product.id} as={Link} to={`/products/${product.id}`}>
+        <Image
+          style={{ borderRadius: 0 }}
+          src={product.image}
+          wrapped
+          ui={false}
+        />
         <Card.Content>
           <Card.Header>{product.title}</Card.Header>
           <Card.Meta>${parseFloat(product.price).toFixed(2)}</Card.Meta>
@@ -51,6 +79,8 @@ function UserNewArrivals() {
       <UserShopHeader
         selectedCategory={selectedCategory}
         handleCategoryChange={handleCategoryChange}
+        setSelectedSort={setSelectedSort}
+        selectedSort={selectedSort}
       />
       <Container>
         <Card.Group itemsPerRow={4}>{productsMap}</Card.Group>
