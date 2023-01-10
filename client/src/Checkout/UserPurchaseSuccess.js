@@ -1,11 +1,13 @@
 import React from 'react';
 import { Header, Button, Container, Card, Divider } from 'semantic-ui-react';
-import checkout from './checkout.jpg';
+import checkout from '../Images/checkout.jpg';
 import { Link } from 'react-router-dom';
 
 function UserPurchaseSuccess({ orders }) {
-  console.log(orders[0]);
   const recentOrder = orders[orders?.length - 1];
+
+  console.log(orders);
+  console.log(recentOrder);
   return (
     <div>
       <img

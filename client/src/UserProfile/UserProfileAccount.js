@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UserLogOut from './UserLogOut';
+import UserLogOut from '../SignIn/UserLogOut';
 import {
   Form,
   Button,
@@ -10,7 +10,7 @@ import {
   Header,
 } from 'semantic-ui-react';
 import { useNavigate, Link } from 'react-router-dom';
-import landing from './komal.jpg';
+import landing from '../Images/komal.jpg';
 
 function UserProfileAccount({ user, setUser }) {
   const [formState, setFormState] = useState({

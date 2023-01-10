@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, Divider, Dropdown } from 'semantic-ui-react';
 import UserSignIn from './UserSignIn';
-import UserCreateAccount from './UserCreateAccount';
+import UserCreateAccount from '../CreateAccount/UserCreateAccount';
 import { Link } from 'react-router-dom';
 import UserLogOut from './UserLogOut';
-import './App.css';
+import '../App.css';
 
 function UserLoggedInHeader({ user, setUser }) {
   if (user.email === 'admin') {

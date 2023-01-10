@@ -8,14 +8,14 @@ import {
   Divider,
   Statistic,
 } from 'semantic-ui-react';
-import fav1 from './e1.jpeg';
-import fav2 from './e8.jpeg';
-import fav3 from './8.jpeg';
-import header from './12.jpeg';
-import './App.css';
+import fav1 from '../Images/e1.jpeg';
+import fav2 from '../Images/e8.jpeg';
+import fav3 from '../Images/8.jpeg';
+import header from '../Images/12.jpeg';
+import '../App.css';
 import { Link } from 'react-router-dom';
-import header2 from './13.jpeg';
-import nyfw from './nyfw.jpg';
+import header2 from '../Images/13.jpeg';
+import nyfw from '../Images/nyfw.jpg';
 import LandingFooter from './LandingFooter';
 
 function UserLandingLayout({ products }) {

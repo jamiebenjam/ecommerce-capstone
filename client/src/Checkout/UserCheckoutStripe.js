@@ -8,7 +8,7 @@ import {
   Icon,
   Divider,
 } from 'semantic-ui-react';
-import landing from './union.jpg';
+import landing from '../Images/union.jpg';
 
 const UserCheckoutStripe = ({ orders }) => {
   return (

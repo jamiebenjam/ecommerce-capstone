@@ -1,23 +1,23 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import AdminLanding from './AdminLanding';
+import AdminLanding from './Admin/AdminLanding';
 import { Routes, Route, Link } from 'react-router-dom';
-import UserShopAll from './UserShopAll';
-import UserNewArrivals from './UserNewArrivals';
-import UserProductItem from './UserProductItem';
+import UserShopAll from './ShoppingNav/UserShopAll';
+import UserNewArrivals from './ShoppingNav/UserNewArrivals';
+import UserProductItem from './IndividualProduct/UserProductItem';
 import { Card, Image } from 'semantic-ui-react';
-import UserCart from './UserCart';
-import UserLandingHeader from './UserLandingHeader';
-import UserCreateAccount from './UserCreateAccount';
-import UserAccountHome from './UserAccountHome';
-import UserSignIn from './UserSignIn';
-import UserProfileAccount from './UserProfileAccount';
-import UserCheckout from './UserCheckout';
-import UserOrders from './UserOrders';
-import UserPurchaseSuccess from './UserPurchaseSuccess';
-import AdminOrderView from './AdminOrderView';
-import UserLandingLayout from './UserLandingLayout';
-import UserCheckoutStripe from './UserCheckoutStripe';
+import UserCart from './Cart/UserCart';
+import UserLandingHeader from './LandingPage/UserLandingHeader';
+import UserCreateAccount from './CreateAccount/UserCreateAccount';
+import UserAccountHome from './UserProfile/UserAccountHome';
+import UserSignIn from './SignIn/UserSignIn';
+import UserProfileAccount from './UserProfile/UserProfileAccount';
+import UserCheckout from './Checkout/UserCheckout';
+import UserOrders from './UserProfile/UserOrders';
+import UserPurchaseSuccess from './Checkout/UserPurchaseSuccess';
+import AdminOrderView from './Admin/AdminOrderView';
+import UserLandingLayout from './LandingPage/UserLandingLayout';
+import UserCheckoutStripe from './Checkout/UserCheckoutStripe';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -47,7 +47,10 @@ function App() {
   function ordersFetch() {
     fetch('/orders')
       .then(response => response.json())
-      .then(data => setOrders(data));
+      .then(data => {
+        console.log(data);
+        setOrders(data);
+      });
   }
 
   useEffect(ordersFetch, []);
@@ -251,6 +254,7 @@ function App() {
               totalItems={totalItems}
               setCartProducts={setCartProducts}
               setOrders={setOrders}
+              orders={orders}
             />
           }
         />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Container } from 'semantic-ui-react';
-import LandingFooter from './LandingFooter';
+import LandingFooter from '../LandingPage/LandingFooter';
 import UserShopHeader from './UserShopHeader';
 
 function UserShopAll({

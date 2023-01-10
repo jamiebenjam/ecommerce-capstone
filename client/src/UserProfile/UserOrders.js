@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, Menu, Grid, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import UserLogOut from './UserLogOut';
-import landing from './komal.jpg';
+import UserLogOut from '../SignIn/UserLogOut';
+import landing from '../Images/komal.jpg';
 
 function UserOrders({ setUser, user, setOrders, orders }) {
   const userOrderFilter = orders.filter(order => order.user.id === user.id);

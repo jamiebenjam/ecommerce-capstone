@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import UserHeaderDropdown from './UserHeaderDropdown';
-import UserCartPopup from './UserCartPopup';
-import UserLoggedInHeader from './UserConditionalSignInHeader';
+import UserHeaderDropdown from '../ShoppingNav/UserHeaderDropdown';
+import UserCartPopup from '../Cart/UserCartPopup';
+import UserLoggedInHeader from '../SignIn/UserConditionalSignInHeader';
 import {
   Icon,
   Grid,

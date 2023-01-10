@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Header, Container, Divider } from 'semantic-ui-react';
 import UserCheckoutView from './UserCheckoutView';
-import UserSignIn from './UserSignIn';
+import UserSignIn from '../SignIn/UserSignIn';
 
 function UserCheckout({
   cartProducts,
@@ -12,6 +12,7 @@ function UserCheckout({
   totalItems,
   setCartProducts,
   setOrders,
+  orders,
 }) {
   if (user.id >= 1) {
     return (
@@ -24,6 +25,7 @@ function UserCheckout({
           user={user}
           setCartProducts={setCartProducts}
           setOrders={setOrders}
+          orders={orders}
         />
       </div>
     );

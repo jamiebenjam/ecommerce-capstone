@@ -20,6 +20,7 @@ function UserCheckoutView({
   user,
   setCartProducts,
   setOrders,
+  orders,
 }) {
   const productsPrice = cartProducts?.reduce((a, c) => a + c.qty * c.price, 0);
   const [formState, setFormState] = useState({});
@@ -71,7 +72,7 @@ function UserCheckoutView({
     }).then(r => {
       if (r.ok) {
         r.json()
-          .then(data => setOrders(data))
+          .then(data => setOrders([...orders, data]))
           .then(setCartProducts([]))
           .then(navigate('/cart/checkout/payment'));
       } else {

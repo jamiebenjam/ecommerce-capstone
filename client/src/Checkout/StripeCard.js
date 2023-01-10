@@ -4,11 +4,9 @@ import { Form, Button, Divider, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const StripeCard = ({ orders }) => {
-  // const stripe = useStripe();
-  // const elements = useElements();
+  const recentOrder = orders[orders?.length - 1];
+
   console.log(orders);
-  console.log(orders.amount);
-  console.log(orders[orders?.length - 1]?.amount);
   return (
     <div>
       <Form id="payment-form">
@@ -17,7 +15,7 @@ const StripeCard = ({ orders }) => {
         <Divider hidden />
         <Button color="violet" fluid as={Link} to="/cart/checkout/purchase">
           <Icon name="lock" />
-          Pay ${parseFloat(orders.amount).toFixed(2)}
+          Pay ${parseFloat(recentOrder.amount).toFixed(2)}
         </Button>
       </Form>
     </div>
