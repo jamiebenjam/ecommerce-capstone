@@ -12,10 +12,10 @@ c2 = Category.create(name: 'Chaniya Choli')
 c3 = Category.create(name: 'Dress')
 c4 = Category.create(name: 'Gown')
 c5 = Category.create(name: 'Saree')
-c6 = Category.create(name: 'Blouse')
-c7 = Category.create(name: 'Duster')
-c8 = Category.create(name: 'Dupatta')
-c9 = Category.create(name: 'Jewelry')
+# c6 = Category.create(name: 'Blouse')
+# c7 = Category.create(name: 'Duster')
+# c8 = Category.create(name: 'Dupatta')
+# c9 = Category.create(name: 'Jewelry')
 c10 = Category.create(name: 'Bag')
 
 #Products
@@ -58,7 +58,7 @@ p2 = Product.create(
 p3 = Product.create(
     title: 'CC3645 Riddhi Lehenga', 
     description: 'Silk saree with designer bllouse and matching petticoat', 
-    image: 'https://cdn.shopify.com/s/files/1/1135/5086/products/chaniyacholiforgarbaRAASHomeStudio-1170chaniyacholi2022_360x.jpg?v=1660603010',
+    image: 'https://cdn.shopify.com/s/files/1/1135/5086/products/blue-lehenga-choli-usa.jpg?v=1675704655&width=900',
     price: 350,
     color: 'Navy',
     isActive: true
@@ -296,11 +296,13 @@ p21 = Product.create(
     isActive: true
 )
 p22 = Product.create(
-    title: 'AG1903 Yellow Dress', 
-    description: 'Multi color, this stunner flaunts a multi color  gown dress Perfect for functions, festivals, wedding functions or engagement ceremonies. Pair this Indian dresses with  accessories to make your look more beautiful.', 
-    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/image_e10d6a6f-cfee-423d-a3b3-578e85faad29_360x.jpg?v=1662038560",
-    price: 290,
-    color: 'Orange',
+    title: 'AG1903 Red Dress', 
+    description: 'This stunning georgette dress is with mirror embroidery belt. This gorgeous detailing gives the dress a unique and stylish look, perfect for any special occasion you have in mind. 
+
+    Perfect for Valentine’s Day gatherings or any other function, this dress will make you the talk of the town.To finish off this outfit, style your chic red raw silk dress with statement accessories like raw silk matching party sling and some high heels.', 
+    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/reddresses6K8A5650valantinedaydress_1800x1800.jpg?v=1675577779",
+    price: 190,
+    color: 'Red',
     isActive: true
 )
 p23 = Product.create(
@@ -584,12 +586,12 @@ p50 = Product.create(
     isActive: true
 )
 
-#Jewelry
+#Bag
 p51 = Product.create(
-    title: 'JW1351', 
-    description: 'Handcrafted black and pink terracotta hand-painted necklace set ', 
-    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/image_e1ed7b96-6ff8-4222-b7c0-dfb98669000a_900x.jpg?v=1662086005",
-    price: 15,
+    title: 'AB1065A', 
+    description: 'Cara Tote Bag', 
+    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/CROPTOP3BLOUSE_1800x1800.jpg?v=1673805781",
+    price: 140,
     color: 'Multi',
     isActive: true
 )
@@ -654,7 +656,7 @@ pc48 = ProductCategory.create(product_id: p48.id, category_id: c5.id)
 pc49 = ProductCategory.create(product_id: p49.id, category_id: c5.id)
 pc50 = ProductCategory.create(product_id: p50.id, category_id: c5.id)
 
-pc51 = ProductCategory.create(product_id: p51.id, category_id: c9.id)
+pc51 = ProductCategory.create(product_id: p51.id, category_id: c10.id)
 
 #Sizes
 s1 = Size.create(name: "32")

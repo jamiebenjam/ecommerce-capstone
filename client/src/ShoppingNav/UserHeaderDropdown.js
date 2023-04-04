@@ -28,14 +28,8 @@ function UserHeaderDropdown({ setSelectedCategory }) {
           >
             Shop All
           </Dropdown.Item>
-          {/* <Dropdown.Item> */}
-          {/* <Dropdown text="Clothing"> */}
-          {/* <Dropdown.Menu> */}
           <Divider></Divider>
           <Dropdown.Header>RAAS World</Dropdown.Header>
-          {/* <Dropdown.Item value="All" onClick={() => setSelectedCategory('All')}>
-            All
-          </Dropdown.Item> */}
           {categories.map(category => (
             <Dropdown.Item
               key={category.name}
@@ -45,9 +39,6 @@ function UserHeaderDropdown({ setSelectedCategory }) {
               {category.name}
             </Dropdown.Item>
           ))}
-          {/* </Dropdown.Menu> */}
-          {/* </Dropdown> */}
-          {/* </Dropdown.Item> */}
         </Dropdown.Menu>
       </Dropdown>
     </div>
