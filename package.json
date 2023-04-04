@@ -13,7 +13,8 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^1.10.0",
     "@stripe/stripe-js": "^1.35.0",
-    "gulp": "^4.0.2",
+    "firebase": "^9.18.0",
+    "gulp": "^3.9.1",
     "react-router-dom": "^6.3.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.1.3"

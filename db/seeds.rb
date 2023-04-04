@@ -49,7 +49,7 @@ p2 = Product.create(
     Fully lined
     dry clean
     ", 
-    image: 'https://cdn.shopify.com/s/files/1/1135/5086/products/lehengacholiusa6K8A8882-Editchaniyacholiusa_360x.jpg?v=1649451922',
+    image: 'https://cdn.shopify.com/s/files/1/1135/5086/products/LEHENGACHOLIUSA6K8A7797weddinglehenga.jpg?v=1676686769&width=900',
     price: 1790,
     color: 'Pink, multi',
     isActive: true
