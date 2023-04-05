@@ -2,7 +2,7 @@ import { Modal, Button, Icon, Header } from 'semantic-ui-react';
 import AdminEditProduct from './AdminEditProduct';
 import { useState } from 'react';
 
-function AdminEditModal({ product, setProducts, editProduct }) {
+function AdminEditModal({ product, editProduct }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -22,11 +22,6 @@ function AdminEditModal({ product, setProducts, editProduct }) {
         <Modal.Content>
           <AdminEditProduct product={product} editProduct={editProduct} />
         </Modal.Content>
-        {/* <Modal.Actions>
-                    <Button color='green' onClick={() => setOpen(false)}>
-                    <Icon name='add' /> Add
-                    </Button>
-                </Modal.Actions> */}
       </Modal>
     </div>
   );
