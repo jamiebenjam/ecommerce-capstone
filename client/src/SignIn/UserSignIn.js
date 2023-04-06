@@ -5,8 +5,6 @@ function UserSignIn({ setUser }) {
   const [formState, setFormState] = useState({});
   const [errors, setErrors] = useState(null);
 
-  // let navigate = useNavigate();
-
   function handleSubmit(e) {
     e.preventDefault();
     const newFormObj = {
@@ -23,7 +21,6 @@ function UserSignIn({ setUser }) {
     }).then(r => {
       if (r.ok) {
         r.json().then(data => setUser(data));
-        // .then(navigate('/profile'));
       } else {
         r.json().then(err => setErrors(err.errors));
       }
