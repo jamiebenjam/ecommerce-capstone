@@ -48,7 +48,6 @@ function App() {
     fetch('/orders')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setOrders(data);
       });
   }
@@ -228,7 +227,6 @@ function App() {
             />
           }
         />
-        {/* <Route path="/card" element={<StripeCard />} /> */}
         <Route
           path="/createAccount"
           element={<UserCreateAccount setUser={setUser} />}

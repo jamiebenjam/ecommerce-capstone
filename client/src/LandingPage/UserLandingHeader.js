@@ -70,10 +70,6 @@ function UserLandingHeader({
           </Dropdown>
         </Grid.Column>
 
-        {/* <Grid.Column width={1} as={Link} to="/cart">
-          <Icon color="black" name="heart" />
-        </Grid.Column> */}
-
         <Grid.Column width={1}>
           <UserLoggedInHeader user={user} setUser={setUser} />
         </Grid.Column>
