@@ -24,7 +24,7 @@ const LandingFooter = () => {
           <Grid divided inverted stackable textAlign="left">
             <Grid.Row>
               <Grid.Column width={3}>
-                <Header inverted as="h4" content="About" />
+                <Header inverted as="h3" content="About" />
                 <List link inverted>
                   <List.Item as="a">Ethics and Sustainability</List.Item>
                   <List.Item as="a">Media</List.Item>
@@ -33,7 +33,7 @@ const LandingFooter = () => {
                 </List>
               </Grid.Column>
               <Grid.Column width={3}>
-                <Header inverted as="h4" content="Contact Us" />
+                <Header inverted as="h3" content="Contact Us" />
                 <List link inverted>
                   <List.Item as="a">Size Guide</List.Item>
                   <List.Item as="a">Become a retailer</List.Item>
@@ -41,30 +41,34 @@ const LandingFooter = () => {
                 </List>
               </Grid.Column>
               <Grid.Column width={3}>
-                <Header as="h4" inverted>
+                <Header as="h3" inverted>
                   Follow Us
                 </Header>
                 <Menu.Item
                   href="https://www.instagram.com/alwaysraas/"
                   target="_blank"
+                  aria-label="Instagram"
                 >
                   <Icon inverted name="instagram" />
                 </Menu.Item>
                 <Menu.Item
                   href="https://www.facebook.com/alwaysraas"
                   target="_blank"
+                  aria-label="Facebook"
                 >
                   <Icon inverted name="facebook" />
                 </Menu.Item>
                 <Menu.Item
                   href="https://www.pinterest.com/alwaysraas/"
                   target="_blank"
+                  aria-label="Pinterest"
                 >
                   <Icon inverted name="pinterest" />
                 </Menu.Item>
                 <Menu.Item
                   href="https://twitter.com/alwaysraas"
                   target="_blank"
+                  aria-label="Twitter"
                 >
                   <Icon inverted name="twitter" />
                 </Menu.Item>

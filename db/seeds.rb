@@ -520,7 +520,7 @@ p44 = Product.create(
     description: 'Silk saree with designer blouse and matching petticoat.
 
     Saree comes with stitched designer blouse. Saree is ready to wear.', 
-    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/saree29sareewithblouse_360x.jpg?v=1631583124",
+    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/saree29sareewithblouse_1800x1800.jpg?v=1631583124",
     price: 450,
     color: 'Orange',
     isActive: true
@@ -530,7 +530,7 @@ p45 = Product.create(
     description: 'Silk saree with designer blouse and matching petticoat.
 
     Saree comes with stitched designer blouse. Saree is ready to wear.', 
-    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/saree10sareewithblouse_360x.jpg?v=1631582128",
+    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/saree10sareewithblouse_1800x1800.jpg?v=1631582128",
     price: 350,
     color: 'Navy',
     isActive: true
@@ -540,7 +540,7 @@ p46 = Product.create(
     description: 'Silk saree with designer blouse and matching petticoat.
 
     Saree comes with stitched designer blouse . Saree is ready to wear.', 
-    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/saree4sareewithblouse_360x.jpg?v=1631581907",
+    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/saree4sareewithblouse_1800x1800.jpg?v=1631581907",
     price: 350,
     color: 'Red, black, multi',
     isActive: true
@@ -550,7 +550,7 @@ p47 = Product.create(
     description: 'Silk saree with designer blouse and matching petticoat.
 
     Saree comes with stitched designer blouse . Saree is ready to wear.', 
-    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/saree8sareewithblouse_360x.jpg?v=1631582054",
+    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/saree8sareewithblouse_1800x1800.jpg?v=1631582054",
     price: 390,
     color: 'Multi',
     isActive: true
@@ -560,7 +560,7 @@ p48 = Product.create(
     description: 'Silk saree with designer blouse and matching petticoat.
 
     Saree comes with stitched designer blouse. Saree is ready to wear.', 
-    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/saree17sareewithblouse_360x.jpg?v=1631582344",
+    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/saree17sareewithblouse_1800x1800.jpg?v=1631582344",
     price: 399,
     color: 'Green',
     isActive: true
@@ -570,7 +570,7 @@ p49 = Product.create(
     description: 'Silk saree with designer blouse and matching petticoat.
 
     Saree comes with stitched designer blouse. Saree is ready to wear.', 
-    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/saree28sareewithblouse_360x.jpg?v=1631582921",
+    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/saree28sareewithblouse_1800x1800.jpg?v=1631582921",
     price: 450,
     color: 'Red',
     isActive: true
@@ -580,7 +580,7 @@ p50 = Product.create(
     description: 'Silk saree with designer blouse and matching petticoat.
 
     Saree comes with stitched designer blouse. Saree is ready to wear.', 
-    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/saree13sareewithblouse_360x.jpg?v=1631582229",
+    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/saree13sareewithblouse_1800x1800.jpg?v=1631582229",
     price: 350,
     color: 'Navy',
     isActive: true

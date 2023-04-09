@@ -78,13 +78,13 @@ function UserLandingLayout({ products }) {
 
           <Grid.Row centered href="http://localhost:4000/products/2">
             <Grid.Column width={4}>
-              <Image src={fav1} />
+              <Image src={fav1} alt="Model wearing clothing" />
             </Grid.Column>
             <Grid.Column width={4}>
-              <Image src={fav3} />
+              <Image src={fav3} alt="Model wearing clothing" />
             </Grid.Column>
             <Grid.Column width={4}>
-              <Image src={fav2} />
+              <Image src={fav2} alt="Model wearing clothing" />
             </Grid.Column>
           </Grid.Row>
         </Grid>

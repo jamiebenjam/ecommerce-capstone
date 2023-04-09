@@ -100,6 +100,7 @@ function App() {
           src={product.image}
           wrapped
           ui={false}
+          alt="Model wearing clothing"
         />
         <Card.Content>
           <Card.Header>{product.title}</Card.Header>
