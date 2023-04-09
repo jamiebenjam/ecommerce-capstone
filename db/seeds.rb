@@ -32,7 +32,7 @@ p1 = Product.create(
     Silk
     Fully lined
     dry clean', 
-    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/Kiara-CHANIYA-CHOLI-Raas-The-Global-Desi-indian_clothing_usa-Briidal_lehenga_usa-lehenga_choli_usa_360x.jpg?v=1656716920",
+    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/Kiara-CHANIYA-CHOLI-Raas-The-Global-Desi-indian_clothing_usa-Briidal_lehenga_usa-lehenga_choli_usa_1800x1800.jpg?v=1656716920",
     price: 1990,
     color: 'White, gold',
     isActive: true
@@ -40,7 +40,7 @@ p1 = Product.create(
 
 p2 = Product.create(
     title: 'CC3626 Ayana Lehenga', 
-    description: "The long sheer hand tie-dyed cape at the back of this blue velvet dress with stone, Resham hand embroidery and intricate jewel blouse and contrast dupatta will make you feel like a princess
+    description: "The long sheer hand tie-dyed cape at the back of this pink dress with stone, Resham hand embroidery and intricate jewel blouse and contrast dupatta will make you feel like a princess
 
     Product Information
     stone, Resham hand embroidery
@@ -51,7 +51,7 @@ p2 = Product.create(
     ", 
     image: 'https://cdn.shopify.com/s/files/1/1135/5086/products/LEHENGACHOLIUSA6K8A7797weddinglehenga.jpg?v=1676686769&width=900',
     price: 1790,
-    color: 'Pink, multi',
+    color: 'Pink, white',
     isActive: true
 )
 
@@ -588,13 +588,30 @@ p50 = Product.create(
 
 #Bag
 p51 = Product.create(
-    title: 'AB1065A', 
-    description: 'Cara Tote Bag', 
+    title: 'AB1065A Cara Tote Bag', 
+    description: 'Introducing CARA  a staple of the Raas aesthetic.
+    The CARA tote bag is an extremely versatile design, with a large spacious interior which is perfect for all your daily essentials.   
+    
+    the style is the large tote  may be carried by hand or worn over the shoulder. Add matching sling bag and spectacle cover. The CARA denim tote with sling bag and spectacle case is a perfect everyday tote for women.
+    The bag has accents of color with contrasting blue denim at the centre and embroidered on the side.     
+    
+     CARA sunglasses case and sling bag not included', 
     image: "https://cdn.shopify.com/s/files/1/1135/5086/products/CROPTOP3BLOUSE_1800x1800.jpg?v=1673805781",
     price: 140,
     color: 'Multi',
     isActive: true
 )
+
+p52 = Product.create(
+    title: 'AB1065B', 
+    description: 'Cara Sunglasses Case', 
+    image: "https://cdn.shopify.com/s/files/1/1135/5086/products/CROPTOP4BLOUSE_1800x1800.jpg?v=1673805802",
+    price: 35,
+    color: 'Multi',
+    isActive: true
+)
+
+
 
 
 
@@ -657,6 +674,7 @@ pc49 = ProductCategory.create(product_id: p49.id, category_id: c5.id)
 pc50 = ProductCategory.create(product_id: p50.id, category_id: c5.id)
 
 pc51 = ProductCategory.create(product_id: p51.id, category_id: c10.id)
+pc52 = ProductCategory.create(product_id: p52.id, category_id: c10.id)
 
 #Sizes
 s1 = Size.create(name: "32")
