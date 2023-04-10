@@ -43,7 +43,6 @@ header {
 }
 
 .header-img{
-  /* padding-top: 8%; */
   height: 45em;
   width: 30em;
 }
@@ -57,13 +56,6 @@ header {
   padding-bottom: 1%;
 }
 
-/* image {
-  border-radius: 0 !important;
-}
-
-.ui.card {
-  border-radius: 0 !important;
-} */
 
 .ui.segment {
   border-radius: 0 !important;
