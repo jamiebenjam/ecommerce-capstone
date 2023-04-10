@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
 #Categories
 c1 = Category.create(name: 'Lehenga')
@@ -19,6 +12,7 @@ c5 = Category.create(name: 'Saree')
 c10 = Category.create(name: 'Bag')
 
 #Products
+
 #Lehenga
 p1 = Product.create(
     title: 'Kiara', 
@@ -45,7 +39,6 @@ p2 = Product.create(
     Product Information
     stone, Resham hand embroidery
     Dress length Approx 60 in
-    velvet
     Fully lined
     dry clean
     ", 
@@ -677,29 +670,29 @@ pc51 = ProductCategory.create(product_id: p51.id, category_id: c10.id)
 pc52 = ProductCategory.create(product_id: p52.id, category_id: c10.id)
 
 #Sizes
-s1 = Size.create(name: "32")
-s2 = Size.create(name: "34")
-s3 = Size.create(name: "36")
-s4 = Size.create(name: "38")
-s5 = Size.create(name: "40")
-s6 = Size.create(name: "42")
-s7 = Size.create(name: "One Size")
+# s1 = Size.create(name: "32")
+# s2 = Size.create(name: "34")
+# s3 = Size.create(name: "36")
+# s4 = Size.create(name: "38")
+# s5 = Size.create(name: "40")
+# s6 = Size.create(name: "42")
+# s7 = Size.create(name: "One Size")
 
 #ProductSizes
-ps1 = ProductSize.create(product_id: p1.id, size_id: s1.id)
-ps2 = ProductSize.create(product_id: p1.id, size_id: s2.id)
-ps3 = ProductSize.create(product_id: p1.id, size_id: s3.id)
-ps4 = ProductSize.create(product_id: p1.id, size_id: s4.id)
-ps5 = ProductSize.create(product_id: p1.id, size_id: s5.id)
-ps6 = ProductSize.create(product_id: p1.id, size_id: s6.id)
-ps7 = ProductSize.create(product_id: p8.id, size_id: s7.id)
-ps8 = ProductSize.create(product_id: p9.id, size_id: s7.id)
-ps9 = ProductSize.create(product_id: p2.id, size_id: s1.id)
-ps10 = ProductSize.create(product_id: p2.id, size_id: s2.id)
-ps11 = ProductSize.create(product_id: p2.id, size_id: s3.id)
-ps12 = ProductSize.create(product_id: p2.id, size_id: s4.id)
-ps13 = ProductSize.create(product_id: p2.id, size_id: s5.id)
-ps14 = ProductSize.create(product_id: p2.id, size_id: s6.id)
+# ps1 = ProductSize.create(product_id: p1.id, size_id: s1.id)
+# ps2 = ProductSize.create(product_id: p1.id, size_id: s2.id)
+# ps3 = ProductSize.create(product_id: p1.id, size_id: s3.id)
+# ps4 = ProductSize.create(product_id: p1.id, size_id: s4.id)
+# ps5 = ProductSize.create(product_id: p1.id, size_id: s5.id)
+# ps6 = ProductSize.create(product_id: p1.id, size_id: s6.id)
+# ps7 = ProductSize.create(product_id: p8.id, size_id: s7.id)
+# ps8 = ProductSize.create(product_id: p9.id, size_id: s7.id)
+# ps9 = ProductSize.create(product_id: p2.id, size_id: s1.id)
+# ps10 = ProductSize.create(product_id: p2.id, size_id: s2.id)
+# ps11 = ProductSize.create(product_id: p2.id, size_id: s3.id)
+# ps12 = ProductSize.create(product_id: p2.id, size_id: s4.id)
+# ps13 = ProductSize.create(product_id: p2.id, size_id: s5.id)
+# ps14 = ProductSize.create(product_id: p2.id, size_id: s6.id)
 
 
 
